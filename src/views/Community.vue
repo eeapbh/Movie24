@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <table class="table table-hover table-striped text-center" style="border: 1px solid">
       <thead>
         <tr>
@@ -10,13 +10,19 @@
         </tr>
       </thead>
       <tbody>
-        <Article />
+        <Article 
+          v-for="(article, idx) in articles"
+          :key="idx"
+          :article="article"
+        />
       </tbody> 
     </table>
   </div>
 </template>
 
-<script> 
+<script>
+import axios from 'axios'
+
 import Article from '../components/Article.vue'
 export default {
   name: 'Community',
@@ -27,6 +33,18 @@ export default {
     return {
       articles: [],
     }
+  },
+  created() {
+    axios.get('http://127.0.0.1:8000/api/v1/articles/')
+      .then((res)=> {
+        const temp = []
+        res.data.forEach((element)=>{
+          temp.push(element)
+        })
+        this.articles = temp
+    }).catch((err)=>{
+      console.error(err)
+    })
   }
 }
 </script>
