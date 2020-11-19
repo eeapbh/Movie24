@@ -15,6 +15,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/movies',
+    name: 'Movies',
+    component: Movies
+  },
+  {
     path: '/community',
     name: 'Community',
     component: Community
