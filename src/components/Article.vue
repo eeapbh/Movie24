@@ -2,7 +2,7 @@
   <tr>
     <td>{{ getId }}</td>
     <td>{{ getTitle }}</td>
-    <td>Cha4ser</td>
+    <td>asdas</td>
     <td>1</td>
   </tr>   
 </template>
@@ -19,7 +19,7 @@ export default {
     },
     getTitle() {
       return this.article.title
-    } 
+    },
   }
 }
 </script>

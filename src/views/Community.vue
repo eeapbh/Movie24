@@ -17,6 +17,7 @@
         />
       </tbody> 
     </table>
+    <button class="btn btn-primary" @click="sendToCreateArticle">글쓰기</button>
   </div>
 </template>
 
@@ -32,6 +33,11 @@ export default {
   data() {
     return {
       articles: [],
+    }
+  },
+  methods: {
+    sendToCreateArticle() {
+      this.$router.push({name: 'CreateArticle'})
     }
   },
   created() {
