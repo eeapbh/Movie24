@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Community from '../views/Home.vue'
+import Home from '../views/Home.vue'
 import Community from '../views/Community.vue'
 import CreateArticle from '../views/CreateArticle.vue'
 import Signup from '../views/Signup.vue'
