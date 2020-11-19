@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Movies</h1>
     <ul class="row">
-      <MovieCard 
+      <MoviesCard 
         v-for="(movie, idx) in movies"
         :key="idx"
         :movie="movie"
@@ -14,7 +14,7 @@
 
 <script>
 import axios from 'axios'
-import MovieCard from './MoviesCard.vue'
+import MoviesCard from '../components/MoviesCard.vue'
 export default {
   components: {
     MoviesCard,  
