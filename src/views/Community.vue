@@ -36,21 +36,36 @@ export default {
     }
   },
   methods: {
+    setToken: function () {
+      const token = localStorage.getItem('jwt')
+
+      const config = {
+        headers: {
+          Authorization: `JWT ${token}`
+        }
+      }
+      return config
+    },
     sendToCreateArticle() {
       this.$router.push({name: 'CreateArticle'})
     }
   },
   created() {
-    axios.get('http://127.0.0.1:8000/api/v1/articles/')
-      .then((res)=> {
-        const temp = []
-        res.data.forEach((element)=>{
-          temp.push(element)
-        })
-        this.articles = temp
-    }).catch((err)=>{
-      console.error(err)
-    })
+    if (localStorage.getItem('jwt')) {
+      const config = this.setToken()
+      axios.get('http://127.0.0.1:8000/api/v1/articles/', config)
+        .then((res)=> {
+          const temp = []
+          res.data.forEach((element)=>{
+            temp.push(element)
+          })
+          this.articles = temp
+      }).catch((err)=>{
+        console.error(err)
+      })
+    } else {
+      this.$router.push({ name: 'Login' })
+    }
   }
 }
 </script>
