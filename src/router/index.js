@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Community from '../views/Community.vue'
 import CreateArticle from '../views/CreateArticle.vue'
+import Signup from '../views/Signup.vue'
+import Login from '../views/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,16 @@ const routes = [
     path: '/create-article',
     name: 'CreateArticle',
     component: CreateArticle
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: Signup,
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
   },
 ]
 
