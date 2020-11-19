@@ -22,6 +22,11 @@ export default {
   name: 'Community',
   components: {
     Article
+  },
+  data() {
+    return {
+      articles: [],
+    }
   }
 }
 </script>
