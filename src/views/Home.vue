@@ -34,7 +34,7 @@
 
     <ul class="row">
       <RecommendMovieCard
-        v-for="(movie, idx) in movies"
+        v-for="(movie, idx) in recommendmovies"
         :key="idx"
         :movie="movie"
         class="col-lg-5"
@@ -53,7 +53,7 @@ export default {
   },
   data() {
     return {
-      movies:[],
+      recommendmovies:[],
     }
   },
   methods: {
@@ -69,7 +69,7 @@ export default {
       res.data.forEach(function(element){
         temp.push(element)
       })
-      this.movies=temp
+      this.recommendmovies=temp
     }).catch((err)=>{
       console.error(err)
     })
