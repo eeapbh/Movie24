@@ -32,7 +32,7 @@
     </div> -->
     
 
-    <ul class="row center-block">
+    <ul class="row">
       <RecommendMovieCard
         v-for="(movie, idx) in recommendmovies"
         :key="idx"
