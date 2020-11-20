@@ -3,7 +3,7 @@
     <img :src="getImage" class="card-img-top" alt="">
     <div class="card-body">
       <h5 class="card-title"><b>{{ getTitle }}</b></h5>
-      <p class="card-text">{{ getOverview }}</p>
+      <!-- <p class="card-text">{{ getOverview }}</p> -->
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     getImage: function() {
-      return this.movie.poster_path
+      return 'http://image.tmdb.org/t/p/w185'+this.movie.poster_path
     },
     getTitle: function() {
       return this.movie.title

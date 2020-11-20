@@ -26,16 +26,16 @@ export default {
   },
   created() {
     axios({
-      url: '',
+      url: 'http://127.0.0.1:8000/movies/',
       method: 'GET',
     }).then((res)=>{
       const temp = []
       res.data.forEach(function(element){
         temp.push(element)
       })
-      // console.log(temp)
+      console.log(temp)
       this.movies = temp
-      // console.log(this.movies)
+      console.log(this.movies)
     }).catch((err)=>{
       console.error(err)
     })
