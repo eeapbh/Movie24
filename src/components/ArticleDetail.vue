@@ -20,6 +20,7 @@
       v-for="(comment, idx) in comments"
       :key="idx"
       :comment="comment"
+      :article_pk="article_pk"
     />
   </div>
 </template>
@@ -96,7 +97,7 @@ export default {
   created() {
     const article_pk = this.article_pk
     axios({
-      url: `http://127.0.0.1:8000/api/v1/articles/${article_pk}`,
+      url: `http://127.0.0.1:8000/api/v1/articles/${article_pk}/`,
       method: 'GET',
       headers: {
         Authorization: `JWT ${localStorage.getItem('jwt')}`

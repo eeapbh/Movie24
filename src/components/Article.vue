@@ -36,7 +36,7 @@ export default {
   created() {
     const userid = this.article.user
     axios({
-      url: `http://127.0.0.1:8000/api/v1/accounts/${userid}`,
+      url: `http://127.0.0.1:8000/api/v1/accounts/${userid}/`,
       method: 'GET',
     }).then((res)=>{
       // console.log(res)
