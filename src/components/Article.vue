@@ -1,7 +1,7 @@
 <template>
   <tr>
     <td>{{ getId }}</td>
-    <td>{{ getTitle }}</td>
+    <td v-on:click="getArticleDetail()">{{ getTitle }}</td>
     <td>{{ getUsername }}</td>
     <td>1</td>
   </tr>   
@@ -19,6 +19,11 @@ export default {
   },
   props: {
     article: Object
+  },
+  methods: {
+    getArticleDetail() {
+      this.$router.push({name: 'ArticleDetail', params: {article_pk: this.article.id, writer: this.getUsername}})
+    },
   },
   computed: {
     getId() {
