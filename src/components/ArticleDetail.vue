@@ -11,7 +11,7 @@
     <form @submit="commentSubmit">
       <div class="form-group">
         <label for="comment">댓글을 입력하세요.</label>
-        <textarea class="form-control" id="comment" rows="2" v-model="mycomment"></textarea>
+        <textarea class="form-control" id="comment" rows="2" v-model="mycomment" @keypress.enter="commentSubmit"></textarea>
       </div>
       <button class="btn btn-primary">Submit</button>
     </form>
@@ -87,6 +87,7 @@ export default {
         }).catch((err)=>{
           console.error(err)
         })
+        this.mycomment = ''
       } else {
         alert("댓글을 입력하세요.")
       }
