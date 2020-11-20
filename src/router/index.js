@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Community from '../views/Community.vue'
 import CreateArticle from '../views/CreateArticle.vue'
 import Movies from '../views/Movies.vue'
+import MovieDetail from '../components/MovieDetail.vue'
 import Signup from '../views/Signup.vue'
 import Login from '../views/Login.vue'
 import ArticleDetail from '../components/ArticleDetail.vue'
@@ -21,6 +22,12 @@ const routes = [
     path: '/movies',
     name: 'Movies',
     component: Movies
+  },
+  {
+    path: '/moviedetail',
+    name: 'MovieDetail',
+    component: MovieDetail,
+    props: true
   },
   {
     path: '/community',

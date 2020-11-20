@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="width: 18rem;">
+  <div v-on:click="getMovieDetail()" class="card" style="width: 18rem;">
     <img :src="getImage" class="card-img-top" alt="">
     <div class="card-body">
       <h5 class="card-title"><b>{{ getTitle }}</b></h5>
@@ -9,6 +9,7 @@
 </template>
 
 <script>
+// import axios from 'axios'
 export default {
   props: {
     movie: Object
@@ -23,6 +24,12 @@ export default {
     getOverview: function() {
       return this.movie.overview
     }
+  },
+  methods: {
+    getMovieDetail() {
+      console.log(this.movie)
+      this.$router.push({name: 'MovieDetail', params: {movie_pk: this.movie.id}})
+    },
   },
 }
 </script>
