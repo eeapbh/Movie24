@@ -6,6 +6,8 @@ import CreateArticle from '../views/CreateArticle.vue'
 import Movies from '../views/Movies.vue'
 import Signup from '../views/Signup.vue'
 import Login from '../views/Login.vue'
+import ArticleDetail from '../components/ArticleDetail.vue'
+import Profile from '../views/Profile.vue'
 
 Vue.use(VueRouter)
 
@@ -31,6 +33,12 @@ const routes = [
     component: CreateArticle
   },
   {
+    path: '/article-detail/',
+    name: 'ArticleDetail',
+    component: ArticleDetail,
+    props: true
+  },
+  {
     path: '/signup',
     name: 'Signup',
     component: Signup,
@@ -39,6 +47,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login,
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
   },
 ]
 
