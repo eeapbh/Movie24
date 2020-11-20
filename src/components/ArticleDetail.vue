@@ -16,22 +16,23 @@
       <button class="btn btn-primary">Submit</button>
     </form>
     <hr>
-    <!-- <Comment 
+    <Comment 
       v-for="(comment, idx) in comments"
       :key="idx"
       :comment="comment"
-    /> -->
+    />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import jwt_decode from 'jwt-decode'
 
-// import Comment from '../components/Comment.vue'
+import Comment from '../components/Comment.vue'
 export default {
-  // components: {
-  //   Comment
-  // },
+  components: {
+    Comment
+  },
   data() {
     return {
       title: '',
@@ -39,6 +40,7 @@ export default {
       created_at: '',
       updated_at: '',
       mycomment: '',
+      comments: [],
     }
   },
   props: {
@@ -54,17 +56,34 @@ export default {
       event.preventDefault()
       if (this.mycomment.length !== 0) {
         const article_pk = this.article_pk
+        const token = localStorage.getItem('jwt')
+        // console.log(jwt_decode(token))
+        const user = jwt_decode(token).user_id
+        // console.log(user)
         axios({
           url: `http://127.0.0.1:8000/api/v1/articles/${article_pk}/comments/`,
           method: 'POST',
           data: {
+            user: user,
             content: this.mycomment
           },
           headers: {
             Authorization: `JWT ${localStorage.getItem('jwt')}`
           },
-        }).then((res)=>{
-          console.log(res.data)
+        }).then(()=>{
+          // console.log(res.data)
+          axios({
+            url: `http://127.0.0.1:8000/api/v1/articles/${article_pk}/comments/`,
+            method: 'GET',
+          }).then((res)=>{
+              const temp = []
+              res.data.forEach((element)=>{
+                temp.push(element)
+              })
+              this.comments = temp
+          }).catch((err)=>{
+            console.error(err)
+          })
         }).catch((err)=>{
           console.error(err)
         })
@@ -87,6 +106,18 @@ export default {
       this.content = res.data.content
       this.created_at = res.data.created_at
       this.updated_at = res.data.updated_at
+    }).catch((err)=>{
+      console.error(err)
+    }),
+    axios({
+      url: `http://127.0.0.1:8000/api/v1/articles/${article_pk}/comments/`,
+      method: 'GET',
+    }).then((res)=>{
+        const temp = []
+        res.data.forEach((element)=>{
+          temp.push(element)
+        })
+        this.comments = temp
     }).catch((err)=>{
       console.error(err)
     })
