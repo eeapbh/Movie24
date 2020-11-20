@@ -2,7 +2,7 @@
   <div>
     <h1>Home</h1>
     
-    <div class="slideshow-container">
+    <!-- <div class="slideshow-container">
 
       <div class="mySlides fade">
         <div class="numbertext">1 / 3</div>
@@ -29,15 +29,15 @@
         <span class="dot"></span> 
         <span class="dot"></span> 
       </div>
-    </div>
+    </div> -->
     
 
-    <ul class="row">
+    <ul class="row center-block">
       <RecommendMovieCard
         v-for="(movie, idx) in recommendmovies"
         :key="idx"
         :movie="movie"
-        class="col-lg-5"
+        class="col-lg-2 col-md-4 col-sm-6 col-xs-12"
       />
     </ul>
   </div>
@@ -62,9 +62,10 @@ export default {
   
   created() {
     axios({
-      url:'http://127.0.0.1:8000/movies/',
+      url:'http://127.0.0.1:8000/movies/bestFive/',
       method:'GET',
     }).then((res)=>{
+      console.log(res)
       const temp=[]
       res.data.forEach(function(element){
         temp.push(element)
