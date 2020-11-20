@@ -1,7 +1,7 @@
 <template>
-  <tr>
+  <tr v-on:click="getArticleDetail()">
     <td>{{ getId }}</td>
-    <td v-on:click="getArticleDetail()">{{ getTitle }}</td>
+    <td>{{ getTitle }}</td>
     <td>{{ getUsername }}</td>
     <td>1</td>
   </tr>   

@@ -1,23 +1,44 @@
 <template>
   <div class="container">
-    <h1>{{article_pk}}번 글</h1>
-    <h3>{{title}}</h3>
-    <h4>{{content}}</h4>
-    <p>{{created_at}}</p>
-    <p>{{updated_at}}</p>
+    <div>
+      <h1>{{article_pk}}번 글</h1>
+      <h3>{{title}}</h3>
+      <h4>{{content}}</h4>
+      <p>{{created_at}}</p>
+      <p>{{updated_at}}</p>
+    </div>
+    <hr>
+    <form @submit="commentSubmit">
+      <div class="form-group">
+        <label for="comment">댓글을 입력하세요.</label>
+        <textarea class="form-control" id="comment" rows="2" v-model="mycomment"></textarea>
+      </div>
+      <button class="btn btn-primary">Submit</button>
+    </form>
+    <hr>
+    <!-- <Comment 
+      v-for="(comment, idx) in comments"
+      :key="idx"
+      :comment="comment"
+    /> -->
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 
+// import Comment from '../components/Comment.vue'
 export default {
+  // components: {
+  //   Comment
+  // },
   data() {
     return {
       title: '',
       content: '',
       created_at: '',
       updated_at: '',
+      mycomment: '',
     }
   },
   props: {
@@ -26,6 +47,30 @@ export default {
     },
     writer: {
       writer: String,
+    },
+  },
+  methods: {
+    commentSubmit(event) {
+      event.preventDefault()
+      if (this.mycomment.length !== 0) {
+        const article_pk = this.article_pk
+        axios({
+          url: `http://127.0.0.1:8000/api/v1/articles/${article_pk}/comments/`,
+          method: 'POST',
+          data: {
+            content: this.mycomment
+          },
+          headers: {
+            Authorization: `JWT ${localStorage.getItem('jwt')}`
+          },
+        }).then((res)=>{
+          console.log(res.data)
+        }).catch((err)=>{
+          console.error(err)
+        })
+      } else {
+        alert("댓글을 입력하세요.")
+      }
     },
   },
   created() {
