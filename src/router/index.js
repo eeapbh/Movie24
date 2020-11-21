@@ -3,12 +3,14 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Community from '../views/Community.vue'
 import CreateArticle from '../views/CreateArticle.vue'
+import UpdateArticle from '../views/UpdateArticle.vue'
 import Movies from '../views/Movies.vue'
 import MovieDetail from '../components/MovieDetail.vue'
 import Signup from '../views/Signup.vue'
 import Login from '../views/Login.vue'
 import ArticleDetail from '../components/ArticleDetail.vue'
 import Profile from '../views/Profile.vue'
+
 
 Vue.use(VueRouter)
 
@@ -38,6 +40,12 @@ const routes = [
     path: '/create-article',
     name: 'CreateArticle',
     component: CreateArticle
+  },
+  {
+    path: '/update-article',
+    name: 'UpdateArticle',
+    component: UpdateArticle,
+    props: true
   },
   {
     path: '/article-detail/',

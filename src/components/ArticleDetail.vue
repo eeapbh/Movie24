@@ -8,6 +8,12 @@
       <p>{{updated_at}}</p>
     </div>
     <hr>
+    <div v-if="writer == currentName">
+      <button class="btn btn-success" @click="updateArticle">Update</button>
+      <p></p>
+      <button class="btn btn-danger" @click="deleteArticle">Delete</button>
+    </div>
+    <hr>
     <form @submit="commentSubmit">
       <div class="form-group">
         <label for="comment">댓글을 입력하세요.</label>
@@ -21,6 +27,7 @@
       :key="idx"
       :comment="comment"
       :article_pk="article_pk"
+      @onParentDeleteComment="onParentDeleteComment"
     />
   </div>
 </template>
@@ -42,6 +49,7 @@ export default {
       updated_at: '',
       mycomment: '',
       comments: [],
+      currentName: '',
     }
   },
   props: {
@@ -49,7 +57,7 @@ export default {
       type: Number,
     },
     writer: {
-      writer: String,
+      type: String,
     },
   },
   methods: {
@@ -93,6 +101,40 @@ export default {
         alert("댓글을 입력하세요.")
       }
     },
+    onParentDeleteComment: function() {
+      const article_pk = this.article_pk
+      axios({
+        url: `http://127.0.0.1:8000/api/v1/articles/${article_pk}/comments/`,
+        method: 'GET',
+      }).then((res)=>{
+          const temp = []
+          res.data.forEach((element)=>{
+            temp.push(element)
+          })
+          this.comments = temp
+      }).catch((err)=>{
+        console.error(err)
+      })
+    },
+    deleteArticle(event) {
+      event.preventDefault()
+      const article_pk = this.article_pk
+      axios({
+        url: `http://127.0.0.1:8000/api/v1/articles/${article_pk}/`,
+        method: 'DELETE',
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      }).then(()=>{
+        this.$router.push({name: 'Community'})
+      }).catch((err)=>{
+        console.error(err)
+      })
+    },
+    updateArticle() {
+      console.log(this.article_pk)
+      this.$router.push({name: 'UpdateArticle', params: {article_pk: this.article_pk, currentTitle: this.title, currentContent: this.content}})
+    }
   },
   created() {
     const article_pk = this.article_pk
@@ -123,7 +165,11 @@ export default {
     }).catch((err)=>{
       console.error(err)
     })
-  }
+    const token = localStorage.getItem('jwt')
+    // console.log(jwt_decode(token))
+    const username = jwt_decode(token).username
+    this.currentName = username
+  },
 }
 </script>
 
