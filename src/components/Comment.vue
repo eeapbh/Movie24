@@ -33,7 +33,7 @@ export default {
         url: `http://127.0.0.1:8000/api/v1/articles/${comment_pk}/comments_delete/`,
         method: 'DELETE'
       }).then(()=>{
-        // this.$router.push({name: 'ArticleDetail', params: {article_pk: this.article_pk, writer: this.getName}})
+        this.$emit('onParentDeleteComment')
       }).catch((err)=>{
         console.error(err)
       })
