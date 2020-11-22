@@ -1,6 +1,4 @@
 <template>
-
- 
   <div class="card mb-3" style="max-width: 540px;">
     <div class="row no-gutters">
       <div class="col-md-4">
@@ -31,6 +29,7 @@
       :key="idx"
       :comment="comment"
       :movie_pk="movie_pk"
+      @onParentDeleteComment="onParentDeleteComment"
     />
   </div>
   
@@ -107,6 +106,21 @@ export default {
       } else {
         alert("댓글을 입력하세요.")
       }
+    },
+    onParentDeleteComment: function() {
+      const movie_pk = this.movie_pk
+      axios({
+        url: `http://127.0.0.1:8000/movies/${movie_pk}/reviews/`,
+        method: 'GET',
+      }).then((res)=>{
+          const temp = []
+          res.data.forEach((element)=>{
+            temp.push(element)
+          })
+          this.comments = temp
+      }).catch((err)=>{
+        console.error(err)
+      })
     },
   },
   created() {
