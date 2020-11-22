@@ -1,8 +1,8 @@
 <template>
   <tr v-on:click="getArticleDetail()">
-    <td>{{ getId }}</td>
     <td>{{ getTitle }}</td>
     <td>{{ getUsername }}</td>
+    <td>*</td>
     <td>1</td>
   </tr>   
 </template>
@@ -26,9 +26,6 @@ export default {
     },
   },
   computed: {
-    getId() {
-      return this.article.id
-    },
     getTitle() {
       return this.article.title
     },
