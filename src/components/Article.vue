@@ -2,8 +2,8 @@
   <tr v-on:click="getArticleDetail()">
     <td>{{ getTitle }}</td>
     <td>{{ getUsername }}</td>
-    <td>*</td>
-    <td>1</td>
+    <td>{{ getComments_cnt }}</td>
+    <td>{{ getRead }}</td>
   </tr>   
 </template>
 
@@ -29,6 +29,12 @@ export default {
     getTitle() {
       return this.article.title
     },
+    getRead() {
+      return this.article.read
+    },
+    getComments_cnt(){
+      return this.article.comments_cnt
+    }
   },
   created() {
     const userid = this.article.user
