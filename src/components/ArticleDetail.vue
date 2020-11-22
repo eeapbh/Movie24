@@ -35,7 +35,6 @@
 <script>
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-
 import Comment from '../components/Comment.vue'
 export default {
   components: {

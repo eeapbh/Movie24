@@ -17,6 +17,9 @@
     </div>
     <form @submit="commentSubmit">
       <div class="form-group">
+        <h3>평점</h3>
+        <input type="number" min="0" max="10" class="form-control" id="rating" v-model="myrating">
+        <hr>
         <label for="comment">댓글을 입력하세요.</label>
         <textarea class="form-control" id="comment" rows="2" v-model="mycomment" @keypress.enter="commentSubmit"></textarea>
       </div>
@@ -27,18 +30,10 @@
       v-for="(comment, idx) in comments"
       :key="idx"
       :comment="comment"
-      :article_pk="article_pk"
+      :movie_pk="movie_pk"
     />
   </div>
   
-  
-  <!-- <div class="container">
-    <img :src="getImage" alt="">
-    <h3>제목: {{ title }}</h3>
-    <p>줄거리: {{ overview }}</p>
-    <h3>평점 : {{ vote_average }}</h3>
-    <h3>개봉일 : {{ release_date }}</h3>
-  </div> -->
 </template>
 
 <script>
@@ -58,6 +53,7 @@ export default {
       overview:'',
       release_date:'',
       mycomment:'',
+      myrating:'',
       comments:[],
     }
   },
@@ -70,20 +66,22 @@ export default {
     },
    
   },
-  commentSubmit(event) {
+  methods: {
+    commentSubmit(event) {
       event.preventDefault()
       if (this.mycomment.length !== 0) {
         const movie_pk = this.movie_pk
         const token = localStorage.getItem('jwt')
-        // console.log(jwt_decode(token))
+        console.log(jwt_decode(token))
         const user = jwt_decode(token).user_id
         // console.log(user)
         axios({
-          url: `http://127.0.0.1:8000/movies/${movie_pk}/reviews`,
+          url: `http://127.0.0.1:8000/movies/${movie_pk}/reviews/`,
           method: 'POST',
           data: {
             user: user,
-            content: this.mycomment
+            content: this.mycomment,
+            rating: this.myrating,
           },
           headers: {
             Authorization: `JWT ${localStorage.getItem('jwt')}`
@@ -91,7 +89,7 @@ export default {
         }).then(()=>{
           // console.log(res.data)
           axios({
-            url: `http://127.0.0.1:8000/movies/${movie_pk}/reviews`,
+            url: `http://127.0.0.1:8000/movies/${movie_pk}/reviews/`,
             method: 'GET',
           }).then((res)=>{
               const temp = []
@@ -109,6 +107,7 @@ export default {
       } else {
         alert("댓글을 입력하세요.")
       }
+    },
   },
   created() {
     const movie_pk = this.movie_pk
@@ -128,19 +127,23 @@ export default {
     }).catch((err)=>{
       console.error(err)
     })
-    // axios({
-    //   url: `http://127.0.0.1:8000/movies/${movie_pk}/reviews`,
-    //   method: 'GET',
-    // }).then((res)=>{
-    //     const temp = []
-    //     res.data.forEach((element)=>{
-    //       temp.push(element)
-    //     })
-    //     this.comments = temp
-    // }).catch((err)=>{
-    //   console.error(err)
-    // })
-  } 
+    axios({
+      url: `http://127.0.0.1:8000/movies/${movie_pk}/reviews/`,
+      method: 'GET',
+    }).then((res)=>{
+        const temp = []
+        res.data.forEach((element)=>{
+          temp.push(element)
+        })
+        this.comments = temp
+    }).catch((err)=>{
+      console.error(err)
+    })
+    const token = localStorage.getItem('jwt')
+    // console.log(jwt_decode(token))
+    const username = jwt_decode(token).username
+    this.currentName = username
+  }, 
     
 }
   
