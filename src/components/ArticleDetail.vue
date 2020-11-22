@@ -168,6 +168,16 @@ export default {
     // console.log(jwt_decode(token))
     const username = jwt_decode(token).username
     this.currentName = username
+
+    //조회수 추가
+    axios({
+      url: `http://127.0.0.1:8000/api/v1/articles/${article_pk}/read/`,
+      method: 'POST',
+    }).then((res)=>{
+      console.log(res)
+    }).catch((err)=>{
+      console.error(err)
+    })
   },
 }
 </script>
