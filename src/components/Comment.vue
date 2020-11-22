@@ -1,8 +1,20 @@
 <template>
-  <span>
-    <p>{{ getComment }} - {{ getName }}</p>
-    <button v-if="getName == currentName" @click="deleteComment">Delete</button>
-  </span>
+  <div>
+    <div class="card mr-auto ml-auto" style="width: 18rem;">
+      <div class="card-header">
+        <div class='row'>
+          <p class="my-2 ml-4"><b>{{ getName }}</b></p>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-text" style="text-align: left;">{{ getComment }}</p>
+      </div>
+      <div class="card-footer text-muted">
+        <a class="card-link" v-if="getName == currentName" @click="deleteComment">댓글 삭제</a>
+      </div>
+    </div>
+    <br>
+  </div>
 </template>
 
 <script>

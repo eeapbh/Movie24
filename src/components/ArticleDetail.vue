@@ -1,18 +1,25 @@
 <template>
   <div class="container">
-    <div>
-      <h1>{{article_pk}}번 글</h1>
-      <h3>{{title}}</h3>
-      <h4>{{content}}</h4>
-      <p>{{created_at}}</p>
-      <p>{{updated_at}}</p>
+    <div class="card">
+      <div class="card-header">
+        <div class='row'>
+          <p class="my-2 ml-4"><b>{{ writer }}</b>님의 글</p>
+          <p class="my-2 ml-auto mr-4" style="display: inline;">{{getDate}} {{ getTime }}</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title" style="text-align: left;"><b>{{ title }}</b></h3>
+        <br>
+        <p class="card-text" style="text-align: left;">{{ content }}</p>
+      </div>
+      <div class="card-footer text-muted">
+        <div v-if="writer == currentName">
+          <button class="btn btn-success" @click="updateArticle">Update</button>
+          <button class="btn btn-danger ml-4" style="display: inline-block;" @click="deleteArticle">Delete</button>
+        </div>
+      </div>
     </div>
-    <hr>
-    <div v-if="writer == currentName">
-      <button class="btn btn-success" @click="updateArticle">Update</button>
-      <p></p>
-      <button class="btn btn-danger" @click="deleteArticle">Delete</button>
-    </div>
+    <br>
     <hr>
     <form @submit="commentSubmit">
       <div class="form-group">
@@ -22,6 +29,7 @@
       <button class="btn btn-primary">Submit</button>
     </form>
     <hr>
+    <h3><b>Comments</b></h3>
     <Comment 
       v-for="(comment, idx) in comments"
       :key="idx"
@@ -29,6 +37,9 @@
       :article_pk="article_pk"
       @onParentDeleteComment="onParentDeleteComment"
     />
+    <div>
+      <br>
+    </div>
   </div>
 </template>
 
@@ -133,6 +144,14 @@ export default {
     updateArticle() {
       console.log(this.article_pk)
       this.$router.push({name: 'UpdateArticle', params: {article_pk: this.article_pk, currentTitle: this.title, currentContent: this.content}})
+    }
+  },
+  computed: {
+    getDate() {
+      return this.updated_at.slice(0,10)
+    },
+    getTime() {
+      return this.updated_at.slice(11,16)
     }
   },
   created() {

@@ -17,24 +17,28 @@
             <li class="nav-item">
               <router-link class="nav-link" to="/profile">Profile</router-link>
             </li>
-            <li class="nav-item">
-              <router-link class="nav-link" @click.native="logout" to="#">Logout</router-link>
-            </li>
-          </ul>
-        </b-navbar-nav>
-        <b-navbar-nav v-else>
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <router-link class="nav-link" to="/signup">Signup</router-link> 
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/login">Login</router-link>
-            </li>
           </ul>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
+          <b-navbar-nav v-if="login">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <router-link class="nav-link" @click.native="logout" to="#">Logout</router-link>
+              </li>
+            </ul>
+          </b-navbar-nav>
+          <b-navbar-nav v-else>
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <router-link class="nav-link" to="/signup">Signup</router-link> 
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/login">Login</router-link>
+              </li>
+            </ul>
+          </b-navbar-nav>
           <b-nav-form>
             <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
             <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
