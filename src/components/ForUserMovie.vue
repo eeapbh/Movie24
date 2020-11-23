@@ -25,8 +25,8 @@ export default {
   },
   methods: {
     getMovieDetail() {
-      console.log(this.movie)
-      this.$router.push({name: 'MovieDetail', params: {movie_pk: this.movie.id}})
+      console.log('눌렀을떄',this.forusermovie)
+      this.$router.push({name: 'MovieDetail', params: {movie_pk: this.forusermovie.id}})
     },
   },
 }

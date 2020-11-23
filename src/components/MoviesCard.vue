@@ -28,7 +28,7 @@ export default {
   methods: {
     getMovieDetail() {
       console.log(this.movie)
-      this.$router.push({name: 'MovieDetail', params: {movie_pk: this.movie.id}})
+      this.$router.push({name: 'MovieDetail', params: {movie_pk: this.movie.movie_id}})
     },
   },
 }

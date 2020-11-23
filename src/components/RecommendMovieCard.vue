@@ -23,7 +23,14 @@ export default {
     getOverview: function() {
       return this.movie.overview
     },
-  }
+    
+  },
+  methods: {
+    getMovieDetail() {
+      console.log(this.movie)
+      this.$router.push({name: 'MovieDetail', params: {movie_pk: this.movie.movie_id}})
+    },
+  },
 }
 </script>
 
