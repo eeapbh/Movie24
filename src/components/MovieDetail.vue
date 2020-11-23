@@ -10,7 +10,7 @@
           <h5>개봉일 : {{ release_date }}</h5>
           <p class="card-text">줄거리: {{ overview }}</p>
           <p class="card-text">평점 : {{ vote_average }}</p>
-          <button @click="getYoutubeTrailer" class="btn btn-danger">Youtube Trailer</button>
+          <button @click="getYoutubeReview" class="btn btn-danger">Youtube Review</button>
         </div>
       </div>
       <iframe v-if="videoURI" :src="videoURI" frameborder="0"></iframe>
@@ -126,10 +126,10 @@ export default {
         console.error(err)
       })
     },
-    getYoutubeTrailer() {
+    getYoutubeReview() {
       const API_KEY = 'AIzaSyDLhdqUWO6Y8sprp4HfiMERKdHzIUoLewA'
       const API_URL = 'https://www.googleapis.com/youtube/v3/search'
-      const inputValue = `${this.title}-trailer`
+      const inputValue = `${this.title} review`
 
       const params = {
         key: API_KEY,
