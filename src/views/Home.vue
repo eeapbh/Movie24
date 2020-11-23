@@ -72,7 +72,7 @@ export default {
       console.log(res.data)
       const movieId = res.data.fav_movie
       axios({
-        url:`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=a03503b78be406a84d592df5327b4dbd&language=en-US&page=1`,
+        url:`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=a03503b78be406a84d592df5327b4dbd&language=kr-KO&page=1`,
         method: 'GET'
       }).then((res)=>{
         const tmp = []
@@ -95,7 +95,7 @@ export default {
         }).catch((err)=>{
           console.error(err)
         })
-        console.log(this.forusermovies)
+        // console.log(this.forusermovies)
       })
     })
     
