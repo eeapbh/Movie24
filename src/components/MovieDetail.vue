@@ -70,6 +70,7 @@ export default {
       event.preventDefault()
       if (this.mycomment.length !== 0) {
         const movie_pk = this.movie_pk
+        console.log("무비 피케이",movie_pk)
         const token = localStorage.getItem('jwt')
         console.log(jwt_decode(token))
         const user = jwt_decode(token).user_id
