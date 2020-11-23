@@ -10,8 +10,10 @@
           <h5>개봉일 : {{ release_date }}</h5>
           <p class="card-text">줄거리: {{ overview }}</p>
           <p class="card-text">평점 : {{ vote_average }}</p>
+          <button @click="getYoutubeTrailer" class="btn btn-danger">Youtube Trailer</button>
         </div>
       </div>
+      <iframe v-if="videoURI" :src="videoURI" frameborder="0"></iframe>
     </div>
     <form @submit="commentSubmit">
       <div class="form-group">
@@ -54,6 +56,7 @@ export default {
       mycomment:'',
       myrating:'',
       comments:[],
+      videoURI:'',
     }
   },
   props: {
@@ -123,6 +126,31 @@ export default {
         console.error(err)
       })
     },
+    getYoutubeTrailer() {
+      const API_KEY = 'AIzaSyDLhdqUWO6Y8sprp4HfiMERKdHzIUoLewA'
+      const API_URL = 'https://www.googleapis.com/youtube/v3/search'
+      const inputValue = `${this.title}-trailer`
+
+      const params = {
+        key: API_KEY,
+        part: 'snippet',
+        type: 'video',
+        q: inputValue,
+      }
+
+      axios.get(API_URL, {
+        params,
+      })
+      .then((res) => {
+        // console.log(res)
+        console.log(res.data.items)
+        const videoId = res.data.items[0].id.videoId
+        this.videoURI = `https://www.youtube.com/embed/${videoId}`
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
   },
   created() {
     const movie_pk = this.movie_pk
