@@ -132,7 +132,7 @@ export default {
       method: 'GET',
       
     }).then((res)=>{
-      
+      console.log(res.data)  
       this.id = res.data.id
       this.poster_path = res.data.poster_path
       this.title = res.data.title
