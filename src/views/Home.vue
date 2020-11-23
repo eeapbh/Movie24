@@ -69,13 +69,14 @@ export default {
       url:`http://127.0.0.1:8000/api/v1/accounts/${user}/recommend/`,
       method: 'GET',
     }).then((res)=> {
+      console.log(res.data)
       const movieId = res.data.fav_movie
       axios({
         url:`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=a03503b78be406a84d592df5327b4dbd&language=en-US&page=1`,
         method: 'GET'
       }).then((res)=>{
         const tmp = []
-        console.log(res.data)
+        console.log('resdata',res.data)
         res.data.results.forEach(function(element){
           tmp.push(element)
         })
