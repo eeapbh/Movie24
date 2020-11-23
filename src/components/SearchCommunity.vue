@@ -19,20 +19,7 @@
         />
       </tbody> 
     </table>
-    <div class="row">
-      <button class="btn btn-primary ml-4" @click="sendToCreateArticle">글쓰기</button>
-      <form @submit="searchSome" class="form-inline ml-auto mr-2">
-        <select v-model="selected" name="kind" class='mx-1 custom-select'>
-          <option value="title">제목</option>
-          <option value="person">글쓴이</option>
-        </select>
-        <input class="form-control mr-sm-2" v-model="search" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      <form>
-        <button class="btn btn-primary ml-auto mr-4" onClick="history.go(0)">Refresh</button>
-      </form>
-    </div>
+    <button class="btn btn-primary" @click="sendToCreateArticle">글쓰기</button>
     <p></p>
     <div class="btn-cover">
       <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
@@ -62,8 +49,6 @@ export default {
       articles: [],
       pageNum: 0,
       pageSize: 10,
-      selected: '',
-      search: '',
     }
   },
   methods: {
@@ -86,41 +71,6 @@ export default {
     sendToCreateArticle() {
       this.$router.push({name: 'CreateArticle'})
     },
-    searchSome(event) {
-      event.preventDefault()
-      const keyword = this.search
-      const temp = []
-      if (this.selected === 'title') {
-        this.articles.forEach((element)=>{
-          // console.log(element.title)
-          const title = element.title
-          if (title.indexOf(keyword) !== -1) {
-            temp.push(element)   
-          }
-          this.articles = temp  
-        })
-      } else {
-        this.articles.forEach((element)=>{
-          // console.log(element.title)
-          const userid = element.user
-          axios({
-            url: `http://127.0.0.1:8000/api/v1/accounts/${userid}/`,
-            method: 'GET',
-          }).then((res)=>{
-            // console.log(res)
-            const username = res.data.username
-            if (username.indexOf(keyword) !== -1) {
-              temp.push(element)       
-            }
-            this.articles = temp
-          }).catch((err)=>{
-            console.error(err)
-          }) 
-        })
-      }
-      this.selected = ''
-      this.search = ''
-    }
   },
   computed: {
     pageCount () {

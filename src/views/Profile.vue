@@ -8,7 +8,7 @@
         <img src="" class="card-img-top" alt="실버">
       </div>
       <div v-else>
-        <img src="../image/첫번째.jpg" class="card-img-top" alt="브론즈">
+        <img src="" class="card-img-top" alt="브론즈">
       </div>
       <div class="card-body">
         <h4 class="card-title">{{username}}의 프로필</h4>
