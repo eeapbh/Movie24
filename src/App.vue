@@ -12,6 +12,9 @@
               <router-link class="nav-link" to="/movies">Movies</router-link>
             </li>
             <li class="nav-item">
+              <router-link class="nav-link" to="liked-movies">LikedMovies</router-link>
+            </li>
+            <li class="nav-item">
               <router-link class="nav-link" to="/community">Community</router-link>
             </li>
             <li class="nav-item">
