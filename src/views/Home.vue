@@ -9,10 +9,11 @@
         :key="idx"
         :movie="movie"
         class="col-lg-2 col-md-4 col-sm-6 col-xs-12"
+        
       />
     <div class="swiper-pagination" slot="pagination"></div>
       <div 
-        class="swiper-button-prev" 
+        class="swiper-button-prev swiper-button-white" 
         slot="button-prev" 
         @click = "Bestprev"
       >
@@ -20,7 +21,7 @@
 
       </div>
       <div 
-      class="swiper-button-next" 
+      class="swiper-button-next swiper-button-white" 
       slot="button-next" 
       @click = "Bestnext"
       >
@@ -37,7 +38,7 @@
         />
       <div class="swiper-pagination" slot="pagination"></div>
       <div 
-        class="swiper-button-prev" 
+        class="swiper-button-prev swiper-button-white" 
         slot="button-prev" 
         @click = "Recprev"
       >
@@ -45,7 +46,7 @@
 
       </div>
       <div 
-      class="swiper-button-next" 
+      class="swiper-button-next swiper-button-white" 
       slot="button-next" 
       @click = "Recnext"
       >
@@ -90,11 +91,13 @@ export default {
       for (let i = 0; i < 5; i++){
         this.$refs.rec.$swiper.slidePrev()
       }
+      this.$refs.rec.$swiper.slidePrev()
     },
     Recnext(){
       for (let i = 0; i < 5; i++){
         this.$refs.rec.$swiper.slideNext()
       }
+      this.$refs.rec.$swiper.slideNext()
     },
     Bestprev(){
       for (let i = 0; i < 5; i++){

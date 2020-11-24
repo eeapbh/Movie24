@@ -6,13 +6,34 @@
         <h5 class="card-title"><b>{{ getTitle }}</b></h5>
       </div>
     </div>
+    <b-modal 
+      ref="detail" 
+      size="lg" 
+      class="bg-black" 
+      :header-bg-variant="black"
+      :body-bg-variant="black"
+      :footer-bg-variant="black"
+      hide-footer>
+        <MovieDetail
+          :movie_pk = this.forusermovie.id
+        />
+    </b-modal>
   </swiper-slide>
 </template>
 
 <script>
+import MovieDetail from '../components/MovieDetail.vue'
 export default {
   props: {
     forusermovie: Object,
+  },
+  components: {
+    MovieDetail
+  },
+  data(){
+    return {
+      black : 'black'
+    }
   },
   computed: {
     getImage: function() {
@@ -28,7 +49,8 @@ export default {
   methods: {
     getMovieDetail() {
       console.log('눌렀을떄',this.forusermovie)
-      this.$router.push({name: 'MovieDetail', params: {movie_pk: this.forusermovie.id}})
+      // this.$router.push({name: 'MovieDetail', params: {movie_pk: this.forusermovie.id}})
+      this.$refs['detail'].show()
     },
   },
 }
