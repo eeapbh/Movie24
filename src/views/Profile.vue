@@ -8,8 +8,9 @@
         <!-- <img src="@/assets/실버.JPG"  class="card-img-top" alt="실버"> -->
       </div>
       <div v-else>
-        <!-- <img src="@/assets/브론즈.JPG"  class="card-img-top" alt="브론즈"> -->
+        <!-- <img src="../assets/브론즈.JPG"  class="card-img-top" alt="브론즈"> -->
       </div>
+      <!-- <img :src="require(`@/assets/images/stooges/${item.img}.jpg`)" /> -->
       <div class="card-body">
         <h4 class="card-title">{{username}}의 프로필</h4>
         <hr>
@@ -46,6 +47,7 @@ import jwt_decode from 'jwt-decode'
 
 export default {
   data: function () {
+    
     return {
       username: '',
       articles: [],
