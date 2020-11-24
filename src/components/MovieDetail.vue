@@ -1,19 +1,25 @@
 <template>
-  <div class="card mb-3 bgblack text-white" style="max-width: 540px;">
+  <div class="mb-3 bgblack text-white" style="width: auto;">
     <div class="row no-gutters">
-      <div class="col-md-4">
+      <!-- <div class="col-md-4">
         <img :src="getImage" alt="">
-      </div>
-      <div class="col-md-8">
+      </div> -->
+      <iframe v-if="videoURI" :src="videoURI" frameborder="0" style = "width: 700px; height: 350px"></iframe>
+      <div>
         <div class="card-body">
+          <br>
           <h2 class="card-title">{{ title }}</h2>
+          <br>
           <h5>개봉일 : {{ release_date }}</h5>
+          <br>
           <p class="card-text">줄거리: {{ overview }}</p>
+          <br>
           <p class="card-text">평점 : {{ vote_average }}</p>
-          <button @click="getYoutubeReview" class="btn btn-danger">Youtube Review</button>
+          <br>
+          <!-- <button @click="getYoutubeReview" class="btn btn-danger">Youtube Review</button> -->
         </div>
       </div>
-      <iframe v-if="videoURI" :src="videoURI" frameborder="0"></iframe>
+      
     </div>
     <form @submit="commentSubmit">
       <div class="form-group">
@@ -60,7 +66,8 @@ export default {
     }
   },
   props: {
-    movie_pk: Number, 
+    movie_pk: Number,
+     
   },
   computed: {
     getImage: function() {
@@ -126,35 +133,39 @@ export default {
         console.error(err)
       })
     },
-    getYoutubeReview() {
-      const API_KEY = 'AIzaSyDLhdqUWO6Y8sprp4HfiMERKdHzIUoLewA'
-      const API_URL = 'https://www.googleapis.com/youtube/v3/search'
-      const inputValue = `${this.title} review`
-
-      const params = {
-        key: API_KEY,
-        part: 'snippet',
-        type: 'video',
-        q: inputValue,
-      }
-
-      axios.get(API_URL, {
-        params,
-      })
-      .then((res) => {
-        // console.log(res)
-        console.log('이거',res.data.items)
-        const videoId = res.data.items[0].id.videoId
-        this.videoURI = `https://www.youtube.com/embed/${videoId}`
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    
+  },
+  beforeUpdate(){
+    const API_KEY = 'AIzaSyBhD6Yp6joYEWzf-SmA7bTQ55CCRKzJVrg'
+    const API_URL = 'https://www.googleapis.com/youtube/v3/search'
+    const inputValue = `${this.title} review`
+    console.log(inputValue)
+    const params = {
+      key: API_KEY,
+      part: 'snippet',
+      type: 'video',
+      q: inputValue,
     }
+
+    axios.get(API_URL, {
+      params,
+    })
+    .then((res) => {
+      // console.log(res)
+      console.log('이거',res.data.items)
+      const videoId = res.data.items[0].id.videoId
+      console.log('저거', videoId)
+      this.videoURI = `https://www.youtube.com/embed/${videoId}?rel=1&mute=1&autoplay=1&controls=0&frameborder=0`
+      console.log('비디오주소', this.videoURI)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   },
   created() {
     const movie_pk = this.movie_pk
     
+
     axios({
       url: `http://127.0.0.1:8000/movies/${movie_pk}/`,
       method: 'GET',
