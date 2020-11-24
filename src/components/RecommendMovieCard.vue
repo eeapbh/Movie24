@@ -1,10 +1,11 @@
 <template>
   <swiper-slide>
     <div class="card bgblack" style="width: 18rem;" @click=getMovieDetail()>
-      <img  :src="getImage" class="card-img-top" alt="">
+      <div class="card-img"><img  :src="getImage" class="card-img-top" alt=""></div>
+      
       <div class="card-body">
         <h5 class="card-title"><b>{{ getTitle }}</b></h5>
-        <!-- <p class="card-text">{{ getOverview }}</p> -->
+        
       </div>
       <b-modal 
       ref="detail" 
@@ -71,6 +72,8 @@ export default {
 .modal_body {
   background-color: black;
 }
+
+
 
 </style>
 

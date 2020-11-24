@@ -1,7 +1,9 @@
 <template>
   <div v-on:click="getMovieDetail()" class="card bg-black" style="width: 18rem;">
-    <img :src="getImage" class="card-img-top" alt="">
+    <div class="card-img"><img :src="getImage" class="card-img-top" alt=""></div>
+    
     <div class="card-body">
+      <br>
       <h5 class="card-title"><b>{{ getTitle }}</b></h5>
       <!-- <p class="card-text">{{ getOverview }}</p> -->
     </div>
@@ -37,5 +39,6 @@ export default {
 <style>
 .bg-black{
   background-color: black;
+  margin: 3%;
 }
 </style>
