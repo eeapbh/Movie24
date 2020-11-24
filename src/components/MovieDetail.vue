@@ -1,26 +1,23 @@
 <template>
   <div class="mb-3 bgblack text-white" style="width: auto;">
-    <div class="row no-gutters">
-      <!-- <div class="col-md-4">
-        <img :src="getImage" alt="">
-      </div> -->
-      <iframe v-if="videoURI" :src="videoURI" frameborder="0" style = "width: 700px; height: 350px"></iframe>
-      <div>
-        <div class="card-body">
-          <br>
-          <h2 class="card-title">{{ title }}</h2>
-          <br>
-          <h5>개봉일 : {{ release_date }}</h5>
-          <br>
-          <p class="card-text">줄거리: {{ overview }}</p>
-          <br>
-          <p class="card-text">평점 : {{ vote_average }}</p>
-          <br>
-          <!-- <button @click="getYoutubeReview" class="btn btn-danger">Youtube Review</button> -->
-        </div>
-      </div>
-      
+    <div class="col-md-4">
+      <img :src="getImage" alt="" width="300px">
     </div>
+    <hr>
+    <iframe v-if="videoURI" :src="videoURI" frameborder="0" style = "width: 700px; height: 350px"></iframe>
+    <div class="row no-gutters" style="display: inline-block;">
+      <div class="card-body">
+        <br>
+        <h1 class="card-title">{{ title }}</h1>
+        <br>
+        <h5>개봉일: {{ release_date }} / 평점: {{ vote_average }}</h5>
+        <br>
+        <p class="card-text">{{ overview }}</p>
+        <br>
+        <!-- <button @click="getYoutubeReview" class="btn btn-danger">Youtube Review</button> -->
+      </div> 
+    </div>
+    
     <form @submit="commentSubmit">
       <div class="form-group">
         <!-- <h3>평점</h3>
@@ -43,7 +40,7 @@
         <label for="comment">댓글을 입력하세요.</label>
         <textarea class="form-control" id="comment" rows="2" v-model="mycomment" @keypress.enter="commentSubmit"></textarea>
       </div>
-      <button class="btn btn-primary">Submit</button>
+      <button class="btn btn-primary">제출</button>
     </form>
     <hr>
     <MovieComment 
@@ -155,7 +152,7 @@ export default {
     }
   },
   beforeUpdate(){
-    const API_KEY = 'AIzaSyBhD6Yp6joYEWzf-SmA7bTQ55CCRKzJVrg'
+    const API_KEY = 'AIzaSyC25lb8Cn3S08KDSs4ZDOou3e6XfTFJrgw'
     const API_URL = 'https://www.googleapis.com/youtube/v3/search'
     const inputValue = `${this.title} review`
     console.log(inputValue)
