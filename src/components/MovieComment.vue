@@ -1,14 +1,33 @@
 <template>
   <span>
-    <p>평점:{{getRating}} - {{ getComment }} - {{ getName }}</p>
-    <button v-if="getName == currentName" @click="deleteComment">Delete</button>
+    <star-rating 
+      v-bind:increment="0.5"
+      v-bind:max-rating="5"
+      v-bind:rating="getRating"
+      v-bind:show-rating="false"
+      v-bind:read-only="true"
+      inactive-color="#000"
+      active-color="#ff0"
+      border-color="#ff0"
+      v-bind:padding="8"
+      v-bind:border-width="2"
+      v-bind:star-size="10"
+      @rating-selected="setRating">
+    </star-rating>
+    <p><b>{{ getName }}</b></p>
+    <p>{{ getComment }} <b><a href="" v-if="getName == currentName" @click="deleteComment">삭제</a></b></p>
+    <hr>
   </span>
 </template>
 
 <script>
 import axios from 'axios'
+import StarRating from 'vue-star-rating'
 import jwt_decode from 'jwt-decode'
 export default {
+  components: {
+    StarRating
+  },
   data() {
     return {
       getName: '',
@@ -25,7 +44,7 @@ export default {
       return this.comment.content
     },
     getRating() {
-      return this.comment.rating
+      return this.comment.rating / 2
     },
   },
   methods: {
