@@ -14,7 +14,7 @@
       :header-bg-variant="black"
       :body-bg-variant="black"
       :footer-bg-variant="black"
-      hide-footer>
+      hide-footer hide-header>
         <MovieDetail
           :movie_pk = this.forusermovie.id
         />
