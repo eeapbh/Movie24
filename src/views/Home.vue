@@ -19,8 +19,8 @@
       :title="SFTitle"
     />
     <Sliders
-      :movies="Adventuremovies"
-      :title="AdventureTitle"
+      :movies="Romancemovies"
+      :title="RomanceTitle"
     />
     
 
@@ -75,7 +75,7 @@ export default {
       recommendmovies:[],
       horrormovies:[],
       SFmovies:[],
-      Adventuremovies:[],
+      Romancemovies:[],
       similarmovies1:[],
       similarmovies2:[],
       nowmovies:[],
@@ -83,7 +83,7 @@ export default {
       recommendTitle:'평론가 호평을 받은 영화',
       horrorTitle:'호러 영화',
       SFTitle:'SF 영화',
-      AdventureTitle:'어드벤처 영화',
+      RomanceTitle:'로맨스 영화',
       nowTitle:'현재 상영중인 영화',
 
 
@@ -151,7 +151,7 @@ export default {
         console.log(res.data)
         const movieId = res.data.fav_movie
         axios({
-          url:`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=a03503b78be406a84d592df5327b4dbd&language=kr-KO&page=1`,
+          url:`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=a03503b78be406a84d592df5327b4dbd&language=ko-KR&page=1`,
           method: 'GET'
         }).then((res)=>{
         const tmp = []
@@ -181,7 +181,7 @@ export default {
     
     //호러
     axios({
-      url:'https://api.themoviedb.org/3/discover/movie?api_key=a03503b78be406a84d592df5327b4dbd&language=kr-KO&page=1',
+      url:'https://api.themoviedb.org/3/discover/movie?api_key=a03503b78be406a84d592df5327b4dbd&language=ko-KR&page=1&with_genres=27',
       method: 'GET',
       data: {
           with_genres: 27,
@@ -197,7 +197,6 @@ export default {
         tmp.push(e)
     })
     this.horrormovies = tmp
-    })
     axios({
         url: 'http://127.0.0.1:8000/movies/forUserMovieSave/ ',
         method: 'POST',
@@ -212,11 +211,13 @@ export default {
       }).catch((err)=>{
         console.error(err)
       })
+    })
+    
     //끝
     
     //SF
     axios({
-      url:'https://api.themoviedb.org/3/discover/movie?api_key=a03503b78be406a84d592df5327b4dbd&language=kr-KO&page=1',
+      url:'https://api.themoviedb.org/3/discover/movie?api_key=a03503b78be406a84d592df5327b4dbd&language=ko-KR&page=1&with_genres=878',
       method: 'GET',
       data: {
           with_genres: 878,
@@ -234,7 +235,6 @@ export default {
         tmp.push(e)
     })
     this.SFmovies = tmp
-    })
     axios({
         url: 'http://127.0.0.1:8000/movies/forUserMovieSave/ ',
         method: 'POST',
@@ -249,11 +249,13 @@ export default {
       }).catch((err)=>{
         console.error(err)
       })
+    })
+    
     //끝
 
-    //Adventure
+    //Romance
     axios({
-      url:'https://api.themoviedb.org/3/discover/movie?api_key=a03503b78be406a84d592df5327b4dbd&language=kr-KO&page=1',
+      url:'https://api.themoviedb.org/3/discover/movie?api_key=a03503b78be406a84d592df5327b4dbd&language=ko-KR&page=1&with_genres=10749',
       method: 'GET',
       data: {
           with_genres: 12,
@@ -262,34 +264,35 @@ export default {
       }
     }).then((res)=>{
       const tmp = []
-      console.log('어드벤처',res.data)
+      console.log('로맨스',res.data)
       res.data.results.forEach(function(element){
         const e = element
         e['movie_id'] = element['id']
         tmp.push(e)
     })
-    this.Adventuremovies = tmp
-    })
+    this.Romancemovies = tmp
     axios({
         url: 'http://127.0.0.1:8000/movies/forUserMovieSave/ ',
         method: 'POST',
         data: {
-          forusermovies:this.Adventuremovies,
+          forusermovies:this.Romancemovies,
         },
         headers: {
           Authorization: `JWT ${localStorage.getItem('jwt')}`
         },
       }).then(()=>{
-        console.log('어드벤처 DB저장')
+        console.log('로맨스 DB저장')
       }).catch((err)=>{
         console.error(err)
       })
+    })
+    
     //끝
     
 
     //상영중영화
     axios({
-      url:'https://api.themoviedb.org/3/movie/now_playing?api_key=a03503b78be406a84d592df5327b4dbd&language=kr-KO&page=1',
+      url:'https://api.themoviedb.org/3/movie/now_playing?api_key=a03503b78be406a84d592df5327b4dbd&language=ko-KR&page=1',
       method: 'GET',
       data: {
           page: 1,
@@ -304,7 +307,6 @@ export default {
         tmp.push(e)
     })
     this.nowmovies = tmp
-    })
     axios({
         url: 'http://127.0.0.1:8000/movies/forUserMovieSave/ ',
         method: 'POST',
@@ -319,6 +321,8 @@ export default {
       }).catch((err)=>{
         console.error(err)
       })
+    })
+    
     //끝
   
   }  
