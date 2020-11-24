@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="card">
+  <div class="container articledetail">
+    <div class="card" style="background-color: black">
       <div class="card-header">
         <div class='row'>
           <p class="my-2 ml-4"><b>{{ writer }}</b>님의 글</p>
@@ -22,14 +22,15 @@
     <br>
     <hr>
     <form @submit="commentSubmit">
-      <div class="form-group">
+      <div class="form-group" >
         <label for="comment">댓글을 입력하세요.</label>
-        <textarea class="form-control" id="comment" rows="2" v-model="mycomment" @keypress.enter="commentSubmit"></textarea>
+        <textarea class="form-control" style="background-color: black color:white" id="comment" rows="2" v-model="mycomment" @keypress.enter="commentSubmit"></textarea>
       </div>
       <button class="btn btn-primary">Submit</button>
     </form>
     <hr>
     <h3><b>Comments</b></h3>
+    
     <Comment 
       v-for="(comment, idx) in comments"
       :key="idx"
@@ -202,5 +203,8 @@ export default {
 </script>
 
 <style>
-
+  .articledetail {
+    background-color: black;
+    height: 800px;
+  }
 </style>

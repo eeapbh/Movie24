@@ -1,16 +1,16 @@
 <template>
   <div>
-    <div class="card mr-auto ml-auto" style="width: 18rem;">
-      <div class="card-header">
-        <div class='row'>
-          <p class="my-2 ml-4"><b>{{ getName }}</b></p>
-        </div>
+    <div class="comment row">
+      <div class="col-2">
+        <p><b>{{ getName }}</b></p>
       </div>
-      <div class="card-body">
-        <p class="card-text" style="text-align: left;">{{ getComment }}</p>
+
+      <div class="col-8">
+        <p class="text-left" style="color:white">{{ getComment }}</p>
       </div>
-      <div class="card-footer text-muted">
-        <a class="card-link" v-if="getName == currentName" @click="deleteComment">댓글 삭제</a>
+
+      <div class="col-2">
+        <a v-if="getName == currentName" @click="deleteComment">댓글 삭제</a>
       </div>
     </div>
     <br>
@@ -71,5 +71,9 @@ export default {
 </script>
 
 <style>
-
+  .comment {
+    background-color: black;
+    
+    
+  }
 </style>
