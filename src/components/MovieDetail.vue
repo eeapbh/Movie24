@@ -23,8 +23,9 @@
     </div>
     <form @submit="commentSubmit">
       <div class="form-group">
-        <h3>평점</h3>
-        <input type="number" min="0" max="10" class="form-control" id="rating" v-model="myrating">
+        <!-- <h3>평점</h3>
+        <input type="number" min="0" max="10" class="form-control" id="rating" v-model="myrating"> -->
+        
         <hr>
         <label for="comment">댓글을 입력하세요.</label>
         <textarea class="form-control" id="comment" rows="2" v-model="mycomment" @keypress.enter="commentSubmit"></textarea>
@@ -133,7 +134,6 @@ export default {
         console.error(err)
       })
     },
-    
   },
   beforeUpdate(){
     const API_KEY = 'AIzaSyBhD6Yp6joYEWzf-SmA7bTQ55CCRKzJVrg'
@@ -197,14 +197,12 @@ export default {
     // console.log(jwt_decode(token))
     const username = jwt_decode(token).username
     this.currentName = username
-  }, 
-    
+  },     
 }
   
-
 </script>
 
 
-<style>
+<style scoped>
 
 </style>
