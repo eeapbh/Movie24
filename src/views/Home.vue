@@ -2,25 +2,55 @@
   <div>
     <h1>Home</h1> 
 
-    <h1>이번달 영화순위</h1>
-    <ul class="row">
+    <h5 class='text-left ml-3'>이번달 영화순위</h5>
+    <swiper :options = "swiperOptions" ref = "best">
       <RecommendMovieCard
         v-for="(movie, idx) in recommendmovies"
         :key="idx"
         :movie="movie"
         class="col-lg-2 col-md-4 col-sm-6 col-xs-12"
       />
-    </ul>
+    <div class="swiper-pagination" slot="pagination"></div>
+      <div 
+        class="swiper-button-prev" 
+        slot="button-prev" 
+        @click = "Bestprev"
+      >
+      
+
+      </div>
+      <div 
+      class="swiper-button-next" 
+      slot="button-next" 
+      @click = "Bestnext"
+      >
+      </div>
+    </swiper>
     <br>
-    <h1>{{ username }}님의 취향저격 베스트 컨텐츠</h1>
-    <ul class="row">
-      <ForUserMovie
-        v-for="(forusermovie, idx) in forusermovies"
-        :key="idx"
-        :forusermovie="forusermovie"
-        class="col-lg-2 col-md-4 col-sm-6 col-xs-12"
-      />
-    </ul>
+    <h5 class='text-left ml-3'>{{ username }}님의 취향저격 베스트 컨텐츠</h5>
+    <swiper :options = "swiperOptions" ref = "rec">
+        <ForUserMovie
+          v-for="(forusermovie, idx) in forusermovies"
+          :key="idx"
+          :forusermovie="forusermovie"
+          class="col-lg-2 col-md-4 col-sm-6 col-xs-12"
+        />
+      <div class="swiper-pagination" slot="pagination"></div>
+      <div 
+        class="swiper-button-prev" 
+        slot="button-prev" 
+        @click = "Recprev"
+      >
+      
+
+      </div>
+      <div 
+      class="swiper-button-next" 
+      slot="button-next" 
+      @click = "Recnext"
+      >
+      </div>
+    </swiper>
     
   </div>
   
@@ -41,10 +71,41 @@ export default {
       recommendmovies:[],
       forusermovies:[],
       username:'',
+      swiperOptions: {
+        slidesPerView: 'auto',
+        
+        pagination: {
+          el: '.swiper-pagination',
+          dynamicBullets: true
+        },
+        navigation: {
+          nextEl: '#button-next-relacionados',
+          prevEl: '#button-prev-relacionados'
+        },
+      }
     }
   },
   methods: {
-    
+    Recprev(){
+      for (let i = 0; i < 5; i++){
+        this.$refs.rec.$swiper.slidePrev()
+      }
+    },
+    Recnext(){
+      for (let i = 0; i < 5; i++){
+        this.$refs.rec.$swiper.slideNext()
+      }
+    },
+    Bestprev(){
+      for (let i = 0; i < 5; i++){
+        this.$refs.best.$swiper.slidePrev()
+      }
+    },
+    Bestnext(){
+      for (let i = 0; i < 5; i++){
+        this.$refs.best.$swiper.slideNext()
+      }
+    },
   },
   
   created() {

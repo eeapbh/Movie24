@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <b-navbar class="sticky-top" toggleable="lg" type="dark" variant="dark">
+  <div id="app" class = 'text-white bgblack'>
+    <b-navbar class="sticky-top bl" toggleable="lg" type="dark" variant="dark">
       <router-link class="navbar-brand" to="/">Home</router-link>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -100,4 +100,10 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+</style>
+
+<style scoped>
+  .navbar.navbar-dark.bg-dark{
+    background-color: black!important;
+ }
 </style>

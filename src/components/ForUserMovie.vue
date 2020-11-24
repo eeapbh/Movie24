@@ -1,10 +1,12 @@
 <template>
-  <div v-on:click="getMovieDetail()" class="card" style="width: 18rem;">
-    <img :src="getImage" class="card-img-top" alt="">
-    <div class="card-body">
-      <h5 class="card-title"><b>{{ getTitle }}</b></h5>
+  <swiper-slide>
+    <div v-on:click="getMovieDetail()" class="card bgblack" style="width: 18rem;">
+      <img :src="getImage" class="card-img-top" alt="">
+      <div class="card-body">
+        <h5 class="card-title"><b>{{ getTitle }}</b></h5>
+      </div>
     </div>
-  </div>
+  </swiper-slide>
 </template>
 
 <script>
@@ -33,5 +35,7 @@ export default {
 </script>
 
 <style>
-
+.bgblack {
+  background-color: black;
+}
 </style>
