@@ -10,6 +10,7 @@ import Signup from '../views/Signup.vue'
 import Login from '../views/Login.vue'
 import ArticleDetail from '../components/ArticleDetail.vue'
 import Profile from '../views/Profile.vue'
+import LikedMovies from '../views/LikedMovies.vue'
 
 
 Vue.use(VueRouter)
@@ -67,6 +68,11 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile,
+  },
+  {
+    path: '/liked-movies',
+    name: 'LikedMovies',
+    component: LikedMovies,
   },
 ]
 
