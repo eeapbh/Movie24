@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1><b>Community</b></h1>
+    <h1><b>커뮤니티</b></h1>
     <p></p>
     <table class="table table-hover table-striped text-center" style="border: 2px solid">
       <thead>

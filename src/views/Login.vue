@@ -1,10 +1,13 @@
 <template>
   <div class="container">
-    <h1>Login</h1>
+    <h1><b>로그인</b></h1>
+    <br>
+    <br>
     <div class="form-group">
       <label for="username">사용자 이름</label>
       <input class="form-control" type="text" id="username" v-model="credentials.username">
     </div>
+    <br>
     <div class="form-group">
       <label for="password">비밀번호</label>
       <input
@@ -15,6 +18,7 @@
         @keypress.enter="login"
       >
     </div>
+    <br>
     <button class="btn btn-primary" @click="login">로그인</button>
   </div>
 </template>

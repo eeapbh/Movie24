@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>LikedMovies</h1>
+    <h1><b>내가 찜한 콘텐츠</b></h1>
     <ul class="row">
       <MoviesCard 
         v-for="(movie, idx) in movies"

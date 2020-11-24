@@ -1,14 +1,18 @@
 <template>
   <div class="container">
-    <h1>Signup</h1>
+    <h1><b>회원가입</b></h1>
+    <br>
+    <br>
     <div class="form-group">
       <label for="username">사용자 이름</label>
       <input class="form-control" type="text" id="username" v-model="credentials.username">
     </div>
+    <br>
     <div class="form-group">
       <label for="password">비밀번호</label>
       <input class="form-control" type="password" id="password" v-model="credentials.password">
     </div>
+    <br>
     <div class="form-group">
       <label for="passwordConfirmation">비밀번호 확인</label>
       <input
@@ -19,6 +23,7 @@
         @keypress.enter="signup"
       >
     </div>
+    <br>
     <button class="btn btn-primary" @click="signup">회원가입</button>
   </div>
 </template>
