@@ -1,5 +1,5 @@
 <template>
-  <div v-on:click="getMovieDetail()" class="card" style="width: 18rem;">
+  <div v-on:click="getMovieDetail()" class="card bg-black" style="width: 18rem;">
     <img :src="getImage" class="card-img-top" alt="">
     <div class="card-body">
       <h5 class="card-title"><b>{{ getTitle }}</b></h5>
@@ -35,5 +35,7 @@ export default {
 </script>
 
 <style>
-
+.bg-black{
+  background-color: black;
+}
 </style>
