@@ -54,7 +54,7 @@
     <div class="footerWrap">
       <div class="footer">
         <div class="f1">
-          <img src="@/assets/두번째.jpg" alt="">  
+          <img src="./assets/두번째.jpg" alt="">  
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae sint et accusamus non incidunt commodi eius impedit natus illum, 
             doloribus accusantium voluptatibus, repellendus libero asperiores. Ad perspiciatis sint porro doloremque.</p>
         </div>
