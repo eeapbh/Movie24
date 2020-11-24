@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" style="height: 800px">
     <div class="card" style="width: 20rem;">
       <div v-if="point > 600">
         <img src="" class="card-img-top" alt="골드">

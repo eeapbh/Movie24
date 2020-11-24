@@ -51,7 +51,25 @@
     </b-navbar>
     <p></p>
     <router-view @login="login = true" />
+    <div class="footerWrap">
+      <div class="footer">
+        <div class="f1">
+          <!-- <img src="../image/두번째.jpg" alt="">   -->
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae sint et accusamus non incidunt commodi eius impedit natus illum, 
+            doloribus accusantium voluptatibus, repellendus libero asperiores. Ad perspiciatis sint porro doloremque.</p>
+        </div>
+        <div class="f2">
+          <ul>
+            <li><a href="https://twitter.com/?lang=ko"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.google.co.kr/"><i class="fab fa-google-plus-g"></i></a></li>
+          </ul>
+        </div>
+    </div>
   </div>
+  </div>
+  
 </template>
 
 <script>
@@ -106,4 +124,95 @@ export default {
   .navbar.navbar-dark.bg-dark{
     background-color: black!important;
  }
+
+
+ /* -------------------------------------------Footer------------------------------------------- */
+ .footerWrap {
+    width: 100%;
+    height: 180px;
+    background: black;
+  }
+
+  .footer {
+    width: 1240px;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .footer::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+
+  .footer>.f1 {
+    width: 70%;
+    height: 100%;
+    background: black;
+    float: left;
+    text-align: center;
+  }
+  .f1>img{
+    padding-left: 20px;
+    width: 50%;
+    height: 100px;
+    background-size: cover;
+  }
+
+  .f1>p{
+    padding-left: 20px;
+    padding-top: 30px;
+  }
+
+  .footer>.f2 {
+    width: 30%;
+    height: 100%;
+    background: black;
+    float: left;
+    position: relative;
+  }
+
+  /* .logo2 {
+      background: url(img/logo.png)no-repeat;
+      background-size: cover;
+      width: 260px;
+      height: 80px;
+      margin-bottom: 20px;
+  } */
+
+
+  .f2>ul::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+
+  .f2>ul>li {
+    width: 25%;
+    float: left;   
+    border-top: 1px #555 solid;
+    border-bottom: 1px #555 solid;
+    padding: 20px 0;
+    list-style:none;
+  }
+
+  .f2>ul>li>a {
+    color: #555;
+    font-size: 20px;
+      
+  }
+
+  .f2>ul {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    padding: 0;
+  }
+
+  .f2>ul>li>a:hover {
+    color: #fff;
+  }
 </style>

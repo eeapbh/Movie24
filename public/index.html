@@ -7,97 +7,7 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <style>
-      .footerWrap {
-        width: 100%;
-        height: 180px;
-        background: #444;
-      }
-
-      .footer {
-        width: 1240px;
-        height: 100%;
-        margin: 0 auto;
-      }
-
-      .footer::after {
-        display: block;
-        clear: both;
-        content: "";
-      }
-
-      .footer>.f1 {
-        width: 70%;
-        height: 100%;
-        background: #999;
-        float: left;
-        text-align: center;
-      }
-      .f1>img{
-        padding-left: 20px;
-        width: 50%;
-        height: 100px;
-        background-size: cover;
-      }
-
-      .f1>p{
-        padding-left: 20px;
-        padding-top: 30px;
-      }
-
-      .footer>.f2 {
-        width: 30%;
-        height: 100%;
-        background: rgb(197, 194, 194);
-        float: left;
-        position: relative;
-      }
-
-      /* .logo2 {
-          background: url(img/logo.png)no-repeat;
-          background-size: cover;
-          width: 260px;
-          height: 80px;
-          margin-bottom: 20px;
-      } */
-
-
-      .f2>ul::after {
-        display: block;
-        clear: both;
-        content: "";
-      }
-
-      .f2>ul>li {
-        width: 25%;
-        float: left;   
-        border-top: 1px #555 solid;
-        border-bottom: 1px #555 solid;
-        padding: 20px 0;
-        list-style:none;
-      }
-
-      .f2>ul>li>a {
-        color: #555;
-        font-size: 20px;
-          
-      }
-
-      .f2>ul {
-        width: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        text-align: center;
-        padding: 0;
-      }
-
-      .f2>ul>li>a:hover {
-        color: #fff;
-      }
-      
-    </style>
+    
   </head>
   <body style="background-color:lightgray">
     <noscript>
@@ -106,22 +16,6 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
     
-    <div class="footerWrap">
-      <div class="footer">
-          <div class="f1">
-            <img src="../image/두번째.jpg" alt="">  
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae sint et accusamus non incidunt commodi eius impedit natus illum, 
-              doloribus accusantium voluptatibus, repellendus libero asperiores. Ad perspiciatis sint porro doloremque.</p>
-          </div>
-          <div class="f2">
-              <ul>
-                  <li><a href="https://twitter.com/?lang=ko"><i class="fab fa-twitter"></i></a></li>
-                  <li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
-                  <li><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a></li>
-                  <li><a href="https://www.google.co.kr/"><i class="fab fa-google-plus-g"></i></a></li>
-              </ul>
-          </div>
-      </div>
-    </div>
+    
   </body>
 </html>
