@@ -7,14 +7,35 @@
       <h5 class="card-title"><b>{{ getTitle }}</b></h5>
       <!-- <p class="card-text">{{ getOverview }}</p> -->
     </div>
+    <b-modal 
+      ref="detail" 
+      size="lg" 
+      class="bg-black" 
+      :header-bg-variant="black"
+      :body-bg-variant="black"
+      :footer-bg-variant="black"
+      hide-footer hide-header>
+        <MovieDetail
+          :movie_pk = this.movie.movie_id
+        />
+      </b-modal>
   </div>
 </template>
 
 <script>
 // import axios from 'axios'
+import MovieDetail from '../components/MovieDetail.vue'
 export default {
   props: {
     movie: Object
+  },
+  components: {
+    MovieDetail
+  },
+  data(){
+    return {
+      black : 'black'
+    }
   },
   computed: {
     getImage: function() {
@@ -29,8 +50,12 @@ export default {
   },
   methods: {
     getMovieDetail() {
+      // console.log(this.movie.title)
       console.log(this.movie)
-      this.$router.push({name: 'MovieDetail', params: {movie_pk: this.movie.movie_id}})
+      // this.$bvModal.show('detail')
+      this.$refs['detail'].show()
+      // console.log(this.movie)
+      // this.$router.push({name: 'MovieDetail', params: {movie_pk: this.movie.movie_id}})
     },
   },
 }
