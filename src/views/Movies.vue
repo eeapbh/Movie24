@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="pagetitle">Movies</h1>
+    <h1 class="pagetitle"><b>영화</b></h1>
     <hr>
     <hr>
     <ul class="row">

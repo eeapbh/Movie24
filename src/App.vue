@@ -76,7 +76,14 @@
     </b-navbar>
     <p></p>
     <router-view @login="login = true" />
-    <div class="footerWrap">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="footerWrap fixed-bottom">
       <div class="footer">
         <div class="f1">
           <!-- <img src="./assets/두번째.jpg" alt="">   -->
