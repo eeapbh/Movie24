@@ -163,6 +163,16 @@ export default {
 </script>
 
 <style>
+  .table {
+    color: lightgray;
+    
+  }
+
+  tbody {
+    cursor: pointer;
+  }
+  
+
   .btn-cover {
     margin-top: 1.5rem;
     text-align: center;
