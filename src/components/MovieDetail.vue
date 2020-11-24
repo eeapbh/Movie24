@@ -25,7 +25,20 @@
       <div class="form-group">
         <!-- <h3>평점</h3>
         <input type="number" min="0" max="10" class="form-control" id="rating" v-model="myrating"> -->
-        
+        <label for="star">별점</label>
+        <star-rating
+          id="star" 
+          v-bind:increment="0.5"
+          v-bind:max-rating="5"
+          v-bind:show-rating="false"
+          inactive-color="#000"
+          active-color="#ff0"
+          border-color="#ff0"
+          v-bind:padding="8"
+          v-bind:border-width="2"
+          v-bind:star-size="50"
+          @rating-selected="setRating">
+        </star-rating>
         <hr>
         <label for="comment">댓글을 입력하세요.</label>
         <textarea class="form-control" id="comment" rows="2" v-model="mycomment" @keypress.enter="commentSubmit"></textarea>
@@ -47,10 +60,12 @@
 <script>
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
+import StarRating from 'vue-star-rating'
 import MovieComment from '../components/MovieComment.vue'
 export default {
   components: {
-    MovieComment
+    MovieComment,
+    StarRating
   },
   data() {
     return {
@@ -134,6 +149,10 @@ export default {
         console.error(err)
       })
     },
+    setRating(rating) {
+      // console.log(rating)
+      this.myrating = rating * 2
+    }
   },
   beforeUpdate(){
     const API_KEY = 'AIzaSyBhD6Yp6joYEWzf-SmA7bTQ55CCRKzJVrg'
