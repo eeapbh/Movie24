@@ -79,9 +79,13 @@
     <div class="footerWrap">
       <div class="footer">
         <div class="f1">
-          <img src="./assets/두번째.jpg" alt="">  
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae sint et accusamus non incidunt commodi eius impedit natus illum, 
-            doloribus accusantium voluptatibus, repellendus libero asperiores. Ad perspiciatis sint porro doloremque.</p>
+          <!-- <img src="./assets/두번째.jpg" alt="">   -->
+          <pre>
+          Movie24 대한민국
+          이메일 주소: korea@movie24.com
+          주소: 대전광역시 유성구 동서대로 98-39
+          Movie24서비시스코리아 유한회사 통신판매업신고번호: 제2018-대전유성-0426호 전화번호: 00-308-321-0058
+          </pre>
         </div>
         <div class="f2">
           <ul>
@@ -185,9 +189,10 @@ export default {
    
   }
 
-  .f1>p{
-    padding-left: 20px;
-    padding-top: 30px;
+  .f1>pre{
+    padding-right: 20px;
+    padding-top: 50px;
+    color: white;
   }
 
   .footer>.f2 {
