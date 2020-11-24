@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Home</h1> 
+    <h1> <b>Movie24</b></h1> 
     
     <Sliders
       :movies="recommendmovies"
