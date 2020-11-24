@@ -192,7 +192,9 @@ export default {
       const tmp = []
       console.log('호러',res.data)
       res.data.results.forEach(function(element){
-        tmp.push(element)
+        const e = element
+        e['movie_id'] = element['id']
+        tmp.push(e)
     })
     this.horrormovies = tmp
     })
@@ -227,7 +229,9 @@ export default {
       console.log('SF',res.data)
       res.data.results.forEach(
         function(element){
-        tmp.push(element)
+        const e = element
+        e['movie_id'] = element['id']
+        tmp.push(e)
     })
     this.SFmovies = tmp
     })
@@ -260,7 +264,9 @@ export default {
       const tmp = []
       console.log('어드벤처',res.data)
       res.data.results.forEach(function(element){
-        tmp.push(element)
+        const e = element
+        e['movie_id'] = element['id']
+        tmp.push(e)
     })
     this.Adventuremovies = tmp
     })
@@ -293,7 +299,9 @@ export default {
       const tmp = []
       console.log('상영중',res.data)
       res.data.results.forEach(function(element){
-        tmp.push(element)
+        const e = element
+        e['movie_id'] = element['id']
+        tmp.push(e)
     })
     this.nowmovies = tmp
     })
