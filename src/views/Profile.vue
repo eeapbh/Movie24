@@ -2,13 +2,13 @@
   <div class="container" style="height: 800px">
     <div class="card" style="width: 20rem;">
       <div v-if="point > 600">
-        <img src="" class="card-img-top" alt="골드">
+        <!-- <img src="@/assets/골드.JPG"  class="card-img-top" alt="골드"> -->
       </div>
       <div v-else-if="point > 300">
-        <img src="" class="card-img-top" alt="실버">
+        <!-- <img src="@/assets/실버.JPG"  class="card-img-top" alt="실버"> -->
       </div>
       <div v-else>
-        <img src="" class="card-img-top" alt="브론즈">
+        <!-- <img src="@/assets/브론즈.JPG"  class="card-img-top" alt="브론즈"> -->
       </div>
       <div class="card-body">
         <h4 class="card-title">{{username}}의 프로필</h4>
@@ -51,6 +51,11 @@ export default {
       articles: [],
       comments: [],
       point: 0,
+      // rank: [
+      //   {
+
+      //   }
+      // ]
     }
   },
   created() {

@@ -54,7 +54,7 @@
     <div class="footerWrap">
       <div class="footer">
         <div class="f1">
-          <!-- <img src="../image/두번째.jpg" alt="">   -->
+          <img src="@/assets/두번째.jpg" alt="">  
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae sint et accusamus non incidunt commodi eius impedit natus illum, 
             doloribus accusantium voluptatibus, repellendus libero asperiores. Ad perspiciatis sint porro doloremque.</p>
         </div>
@@ -157,6 +157,7 @@ export default {
     width: 50%;
     height: 100px;
     background-size: cover;
+   
   }
 
   .f1>p{
@@ -172,12 +173,12 @@ export default {
     position: relative;
   }
 
-  /* .logo2 {
-      background: url(img/logo.png)no-repeat;
-      background-size: cover;
-      width: 260px;
-      height: 80px;
-      margin-bottom: 20px;
+  /* .logo {
+    background: url(img3/con1.jpg)no-repeat;
+    background-size: cover;
+    width: 260px;
+    height: 80px;
+    margin-bottom: 20px;
   } */
 
 
