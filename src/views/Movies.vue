@@ -1,12 +1,14 @@
 <template>
   <div class="container">
-    <h1>Movies</h1>
+    <h1 class="pagetitle">Movies</h1>
+    <hr>
+    <hr>
     <ul class="row">
       <MoviesCard 
         v-for="(movie, idx) in movies"
         :key="idx"
         :movie="movie"
-        class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
+        class="col-lg-3 col-md-4 col-sm-6 col-xs-12"
       />
     </ul>
   </div>
@@ -44,5 +46,5 @@ export default {
 </script>
 
 <style>
-
+ 
 </style>

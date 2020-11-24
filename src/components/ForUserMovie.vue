@@ -1,7 +1,8 @@
 <template>
   <swiper-slide>
     <div v-on:click="getMovieDetail()" class="card bgblack" style="width: 18rem;">
-      <img :src="getImage" class="card-img-top" alt="">
+      <div class="card-img"><img :src="getImage" class="card-img-top" alt=""></div>
+      
       <div class="card-body">
         <h5 class="card-title"><b>{{ getTitle }}</b></h5>
       </div>
@@ -60,4 +61,26 @@ export default {
 .bgblack {
   background-color: black;
 }
+.card-img:hover {
+  transform: scale(1.2)
+  
+}
+.card-img {
+  z-index: 2;
+  width: 288px;
+  height: 380px;
+  margin-bottom: 60px;
+}
+
+.card-img-top {
+  background-size: cover;
+}
+
+.card-body {
+  z-index: 3;
+}
+
+
+
+
 </style>
