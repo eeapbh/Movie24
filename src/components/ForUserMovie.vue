@@ -70,6 +70,7 @@ export default {
   width: 288px;
   height: 380px;
   margin-bottom: 60px;
+  cursor: pointer;
 }
 
 .card-img-top {
