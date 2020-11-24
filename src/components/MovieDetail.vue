@@ -143,7 +143,7 @@ export default {
       })
       .then((res) => {
         // console.log(res)
-        console.log(res.data.items)
+        console.log('이거',res.data.items)
         const videoId = res.data.items[0].id.videoId
         this.videoURI = `https://www.youtube.com/embed/${videoId}`
       })
