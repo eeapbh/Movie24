@@ -55,7 +55,9 @@
     <hr style="background-color:white">
     <h2 class="text-left" style="color:gold">작성한 댓글</h2>
     <span v-for= "(comment,idx) in comments" :key = "idx">
-      <li class="text-left" style="list-style:none">{{comment.content}}</li>
+      <li class="text-left" style="list-style:none">
+        {{comment.content}} - (from {{comment.article}})
+        </li>
     </span>
   </div>
 </template>
