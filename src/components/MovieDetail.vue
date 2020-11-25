@@ -1,7 +1,7 @@
 <template>
   <div class="mb-3 bgblack text-white" style="width: auto;">
-    <div class="col-md-4">
-      <img :src="getImage" alt="" width="300px">
+    <div class="col-md-4" >
+      <img :src="getImage" alt="" width="300px" style = "margin-left: 170px;">
     </div>
     <hr>
     <iframe v-if="videoURI" :src="videoURI" frameborder="0" style = "width: 700px; height: 350px"></iframe>
@@ -152,7 +152,7 @@ export default {
     }
   },
   beforeUpdate(){
-    const API_KEY = 'AIzaSyC25lb8Cn3S08KDSs4ZDOou3e6XfTFJrgw'
+    const API_KEY = 'AIzaSyCXIrZdWD7A8aaMCRE-WMaRv0Pv6-qnpKo'
     const API_URL = 'https://www.googleapis.com/youtube/v3/search'
     const inputValue = `${this.title} review`
     console.log(inputValue)
