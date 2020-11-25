@@ -27,8 +27,8 @@ export default {
 
 <style scoped>
 .bg-main {
-  width: 90%;
-  height: 700px;
+  width: 100%;
+  height: 800px;
   position: relative;
   margin-bottom: 250px;
   z-index: 1;
@@ -37,7 +37,7 @@ export default {
 }
 .bg-main::after {
   width: 100%;
-  height: 700px;
+  height: 800px;
   content: "";
   background-image: url('https://img.huffingtonpost.com/asset/5d808be22300001c0555597c.jpeg?ops=scalefit_630_noupscale');
   background-size: cover;
