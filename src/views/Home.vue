@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h1> <b>Movie24</b></h1> 
-    
+    <a href=""><img src="https://fontmeme.com/permalink/201125/06b0a30f002c39bbe1fadfca4ca59adf.png" alt="netflix-type" border="0"></a>
+    <br>
+    <br>
+    <br>
     <Sliders
       :movies="recommendmovies"
       :title="recommendTitle"
