@@ -1,7 +1,7 @@
 <template>
   <div id="app" class = 'text-white bgblack'>
     <b-navbar class="sticky-top bl" toggleable="lg" type="dark" variant="dark">
-      <router-link class="navbar-brand" to="/"><a href=""><img src="https://fontmeme.com/permalink/201125/e5e0cb70c6e30a55fb77051ec55bc665.png" alt="netflix-type" border="0"></a></router-link>
+      <router-link class="navbar-brand" to="/home"><a href="/home"><img src="https://fontmeme.com/permalink/201125/e5e0cb70c6e30a55fb77051ec55bc665.png" alt="netflix-type" border="0"></a></router-link>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -76,13 +76,6 @@
     </b-navbar>
     <p></p>
     <router-view @login="login = true" />
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <div class="footerWrap">
       <div class="footer">
         <div class="f1">
@@ -120,7 +113,7 @@ export default {
     logout: function () {
       localStorage.removeItem('jwt')
       this.login = false
-      this.$router.push({ name: 'Login' })
+      this.$router.push({ name: 'MainPage' })
     }
   },
   created() {
@@ -253,4 +246,8 @@ export default {
   .f2>ul>li>a:hover {
     color: #fff;
   }
+
+  /* .mgb {
+    margin-bottom: 200px
+  } */
 </style>
