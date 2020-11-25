@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a href="/home"><img src="https://fontmeme.com/permalink/201125/06b0a30f002c39bbe1fadfca4ca59adf.png" alt="netflix-type" border="0"></a>
+    <a href=""><img src="https://fontmeme.com/permalink/201125/06b0a30f002c39bbe1fadfca4ca59adf.png" alt="netflix-type" border="0"></a>
     <br>
     <br>
     <br>
@@ -28,14 +28,15 @@
     <div @mouseover = "btnOn" @mouseleave= "btnOff">
       <h4 v-if="forusermovies.length !== 0" class='text-left ml-3'>{{ username }}님의 취향저격 베스트 컨텐츠</h4>
       <swiper :options = "swiperOptions" ref = "rec">
-          <ForUserMovie
-            v-for="(forusermovie, idx) in forusermovies"
-            :key="idx"
-            :forusermovie="forusermovie"
-            class="col-lg-2 col-md-4 col-sm-6 col-xs-12"
-          />
+        <ForUserMovie
+          v-for="(forusermovie, idx) in forusermovies"
+          :key="idx"
+          :forusermovie="forusermovie"
+          class="col-lg-2 col-md-4 col-sm-6 col-xs-12"
+        />
         <div class="swiper-pagination" slot="pagination"></div>
         <div 
+          v-if="buttonOn"
           class="swiper-button-prev swiper-button-white" 
           slot="button-prev" 
           @click = "Recprev"
@@ -44,6 +45,7 @@
 
         </div>
         <div 
+        v-if="buttonOn"
         class="swiper-button-next swiper-button-white" 
         slot="button-next" 
         @click = "Recnext"
@@ -52,18 +54,7 @@
         
       </swiper>
     </div>
-
-      </div>
-      <div 
-      class="swiper-button-next swiper-button-white" 
-      slot="button-next" 
-      @click = "Recnext"
-      >
-      </div>
-    </swiper>
-    <br>
-    <br>
-    <br>
+    
   </div>
   
 </template>
