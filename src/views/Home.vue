@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a href=""><img src="https://fontmeme.com/permalink/201125/06b0a30f002c39bbe1fadfca4ca59adf.png" alt="netflix-type" border="0"></a>
+    <a href="/home"><img src="https://fontmeme.com/permalink/201125/06b0a30f002c39bbe1fadfca4ca59adf.png" alt="netflix-type" border="0"></a>
     <br>
     <br>
     <br>
@@ -50,7 +50,9 @@
       >
       </div>
     </swiper>
-    
+    <br>
+    <br>
+    <br>
   </div>
   
 </template>

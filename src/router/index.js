@@ -11,6 +11,7 @@ import Login from '../views/Login.vue'
 import ArticleDetail from '../components/ArticleDetail.vue'
 import Profile from '../views/Profile.vue'
 import LikedMovies from '../views/LikedMovies.vue'
+import MainPage from '../views/MainPage.vue'
 
 
 Vue.use(VueRouter)
@@ -18,6 +19,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    name: 'MainPage',
+    component: MainPage
+  },
+  {
+    path: '/home',
     name: 'Home',
     component: Home
   },
