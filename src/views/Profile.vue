@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="height: 800px">
+  <div class="container profilediv" style="height: 800px">
     <div style="width: 20rem; background-color:black">
       <div v-if="point > 600">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLrmBbQUIvayWSpk3PMQlMSoexcx9xKxdZkw&usqp=CAU"  class="rank-img" alt="골드">
@@ -112,5 +112,8 @@ export default {
     width: auto; height: auto;
     max-width: 100px;
     max-height: 100px;
+  }
+  .profilediv {
+    margin-bottom: 250px;
   }
 </style>

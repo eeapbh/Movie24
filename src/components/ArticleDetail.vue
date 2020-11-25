@@ -206,5 +206,6 @@ export default {
   .articledetail {
     background-color: black;
     height: 800px;
+    color: white;
   }
 </style>
