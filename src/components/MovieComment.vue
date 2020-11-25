@@ -14,9 +14,14 @@
       v-bind:star-size="10"
       @rating-selected="setRating">
     </star-rating>
-    <p><b>{{ getName }}</b></p>
-    <p>{{ getComment }} <b><a href="" v-if="getName == currentName" @click="deleteComment">삭제</a></b></p>
-    <hr>
+    <div class="row">
+      <div class="col-2"><p><b>{{ getName }}</b></p></div>
+      <div class="col-8"><p>{{ getComment }}</p></div>
+      <div class="col-2"> <b><a href="" v-if="getName == currentName" @click="deleteComment">삭제</a></b></div>
+      
+    </div>
+    <hr style="background-color:white"> 
+    
   </span>
 </template>
 
