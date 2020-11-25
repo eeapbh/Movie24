@@ -1,7 +1,6 @@
 <template>
   <!-- <div class="container"> -->
   <div class="bg-main">
-    <a href="/"><img src="https://fontmeme.com/permalink/201125/963eba5e895ea8f8ccbe65499ff1ac30.png" alt="netflix-type" border="0"></a>
     <div class="text-center mainText">
       
       <h1><b>24시간 영화에 대한 정보를</b></h1>
@@ -11,7 +10,7 @@
       <br>
       <h4>영화 커뮤니티에서 의견을 나눠보세요.</h4>
     </div>
-    
+    <a href="/"><img src="https://fontmeme.com/permalink/201125/570dad38a8803af2f8077b2ff2849aa4.png" alt="netflix-type" border="0"></a>
   </div>
   <!-- </div>   -->
 </template>
@@ -52,13 +51,14 @@ export default {
 }
 .mainText {
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
   transform: translate(-35% ,-70%);
 }
 
 a {
   position: absolute;
-  top: 5%;
+  top: 13%;
+  right: 28.5%;
 }
 </style>
