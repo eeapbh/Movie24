@@ -1,10 +1,32 @@
 <template>
   <div class="container">
     <h1><b>커뮤니티</b></h1>
-    <p></p>
+    <br><br>
+    <h3><b>베스트 조회수</b></h3>
+    <br>
     <table class="table table-hover table-striped text-center" style="border: 2px solid">
       <thead>
-        <tr>
+        <tr style="color:black">
+          <th>제목</th>
+          <th>글쓴이</th>
+          <th>댓글수</th>
+          <th>조회수</th>
+        </tr>
+      </thead>
+      <tbody>
+        <Article 
+          v-for="(article, idx) in bestData"
+          :key="idx"
+          :article="article"
+        />
+      </tbody> 
+    </table>
+    <br><br><br>
+    <h3><b>전체</b></h3>
+    <br>
+    <table class="table table-hover table-striped text-center" style="border: 2px solid">
+      <thead>
+        <tr style="color:black">
           <th>제목</th>
           <th>글쓴이</th>
           <th>댓글수</th>
@@ -141,6 +163,25 @@ export default {
             end = start + this.pageSize;
       const sortedArticles = _.sortBy(this.articles, 'id').reverse()
       return sortedArticles.slice(start, end);
+    },
+    bestData () {
+      // console.log(this.articles)
+      let bestArticles = []
+      this.articles.forEach((element)=>{
+        // console.log(element.read)
+        if (bestArticles.length < 3) {
+          bestArticles.push(element)
+        } else {
+          bestArticles.sort(function(a, b) {
+            return b.read - a.read
+          })
+          if (bestArticles[2].read < element.read) {
+            bestArticles.pop()
+            bestArticles.push(element)
+          }
+        }
+      })
+      return bestArticles
     }
   },
   created() {
@@ -153,6 +194,7 @@ export default {
             temp.push(element)
           })
           this.articles = temp
+          // console.log(this.articles)
       }).catch((err)=>{
         console.error(err)
       })
@@ -169,10 +211,13 @@ export default {
     
   }
 
+  thead {
+    background-color: lightgray;
+  }
+
   tbody {
     cursor: pointer;
   }
-  
 
   .btn-cover {
     margin-top: 1.5rem;
