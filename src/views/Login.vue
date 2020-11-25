@@ -1,6 +1,6 @@
 <template>
   <div class = "bg-main">
-    <div class="container">
+    <div class="container logindiv">
       <br><br><br>
       <h1 class = "text-left"><b>로그인</b></h1>
       <br>
@@ -23,8 +23,8 @@
       </div>
       <br>
       <button class="btn btn-primary" @click="login">로그인</button>
-      <img src="'https://img.huffingtonpost.com/asset/5d808be22300001c0555597c.jpeg?ops=scalefit_630_noupscale'" 
-      alt="" id="bg">
+      
+     
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <br>
     </div>
@@ -63,9 +63,37 @@ export default {
 
 <style scoped>
 .bg-main {
-  background-image: url('https://img.huffingtonpost.com/asset/5d808be22300001c0555597c.jpeg?ops=scalefit_630_noupscale');
-  background-size: 90% 100%;
+  width: 100%;
+  height: 1000px;
+  position: relative;
+  margin-bottom: 250px;
+  z-index: 1;
+  
+  
+}
+.bg-main::after {
+  width: 100%;
+  height: 1000px;
+  content: "";
+  background-image: url('https://i.pinimg.com/originals/df/36/22/df36227e94aadd202bcd3a9dd7cc6c5c.jpg');
+  background-size: cover;
   background-repeat: no-repeat;
-  opacity:0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.5;
+
+}
+
+.logindiv {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% ,-65%);
+  background-color: rgba(0,0,0,.75);
+  width: 550px;
+  height: 550px;
+
 }
 </style>
