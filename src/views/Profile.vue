@@ -137,6 +137,7 @@ export default {
     width: auto; height: auto;
     max-width: 500px;
     max-height: 500px;
+    border-radius: 50%;
   }
   .profilediv {
     margin-bottom: 250px;
