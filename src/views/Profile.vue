@@ -32,7 +32,7 @@
     <br>
     <hr style="background-color:white">
     <h2 class="text-left" style="color:gold">작성한 글</h2>
-    <span v-for= "(article,idx) in articles" :key = "idx">
+    <span v-for= "(article,idx) in paginatedArticles" :key = "idx">
       <li class="text-left" style="list-style:none" @click="getArticleDetail(idx)">
         
         {{article.title}}
@@ -51,14 +51,32 @@
       </b-modal>
       </li>
     </span>
+    <div class="btn-cover">
+      <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
+        이전
+      </button>
+      <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} 페이지</span>
+      <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
+        다음
+      </button>
+    </div>
     <br><br>
     <hr style="background-color:white">
     <h2 class="text-left" style="color:gold">작성한 댓글</h2>
-    <span v-for= "(comment,idx) in comments" :key = "idx">
+    <span v-for= "(comment,idx) in paginatedComments" :key = "idx">
       <li class="text-left" style="list-style:none">
         {{comment.content}} - (from {{comment.article}})
         </li>
     </span>
+    <div class="btn-cover">
+      <button :disabled="pageCommentNum === 0" @click="prevCommentPage" class="page-btn">
+        이전
+      </button>
+      <span class="page-count">{{ pageCommentNum + 1 }} / {{ pageCommentCount }} 페이지</span>
+      <button :disabled="pageCommentNum >= pageCommentCount - 1" @click="nextCommentPage" class="page-btn">
+        다음
+      </button>
+    </div>
   </div>
 </template>
 
@@ -78,6 +96,10 @@ export default {
       comments: [],
       point: 0,
       black: 'black',
+      pageNum: 0,
+      pageSize: 3,
+      pageCommentNum: 0,
+      pageCommentSize: 3,
       // rank: [
       //   {
 
@@ -88,6 +110,56 @@ export default {
   methods:{
     getArticleDetail(idx) {
       this.$refs.detail[idx].show()
+    },
+    nextPage () {
+      this.pageNum += 1;
+    },
+    prevPage () {
+      this.pageNum -= 1;
+    },
+    nextCommentPage () {
+      this.pageCommentNum += 1;
+    },
+    prevCommentPage () {
+      this.pageCommentNum -= 1;
+    },
+  },
+  computed: {
+    pageCount () {
+      let listLeng = this.articles.length,
+          listSize = this.pageSize,
+          page = Math.floor(listLeng / listSize);
+      if (listLeng % listSize > 0) page += 1;
+      
+      /*
+      아니면 page = Math.floor((listLeng - 1) / listSize) + 1;
+      이런식으로 if 문 없이 고칠 수도 있다!
+      */
+      return page;
+    },
+    paginatedArticles () {
+      const start = this.pageNum * this.pageSize,
+            end = start + this.pageSize;
+      // const sortedArticles = _.sortBy(this.articles, 'id').reverse()
+      return this.articles.slice(start, end);
+    },
+    pageCommentCount () {
+      let listLeng = this.comments.length,
+          listSize = this.pageCommentSize,
+          page = Math.floor(listLeng / listSize);
+      if (listLeng % listSize > 0) page += 1;
+      
+      /*
+      아니면 page = Math.floor((listLeng - 1) / listSize) + 1;
+      이런식으로 if 문 없이 고칠 수도 있다!
+      */
+      return page;
+    },
+    paginatedComments () {
+      const start = this.pageCommentNum * this.pageCommentSize,
+            end = start + this.pageCommentSize;
+      // const sortedArticles = _.sortBy(this.articles, 'id').reverse()
+      return this.comments.slice(start, end);
     },
   },
   created() {
