@@ -47,9 +47,6 @@
         다음
       </button>
     </div>
-    <div>
-      <br>
-    </div>
   </div>
 </template>
 
