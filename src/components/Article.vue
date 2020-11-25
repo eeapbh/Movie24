@@ -1,7 +1,15 @@
 <template>
   <tr v-on:click="getArticleDetail()">
     <td>{{ getTitle }}</td>
-    <td>{{ getUsername }}</td>
+    <td v-if="point > 600">
+      <b style="color:gold;">{{ getUsername }}</b>
+    </td>
+    <td v-else-if="point > 300">
+      <b style="color:silver;">{{ getUsername }}</b>
+    </td>
+    <td v-else>
+      <b style="color:brown;">{{ getUsername }}</b>
+    </td>
     <td>{{ getComments_cnt }}</td>
     <td>{{ getRead }}</td>
     <b-modal 
@@ -32,6 +40,7 @@ export default {
     return {
       getUsername: '',
       black:'black',
+      point:0,
     }
   },
   props: {
@@ -64,6 +73,15 @@ export default {
       this.getUsername = res.data.username
     }).catch((err)=>{
       console.error(err)
+    })
+    axios({
+      url: `http://127.0.0.1:8000/api/v1/accounts/${userid}/points/`,
+      method: 'GET'
+    }).then((res)=>{
+      // console.log(res.data)
+      this.point = res.data.point
+    }).catch((err)=>{
+      console.log(err)
     })
   }
 }
