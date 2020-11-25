@@ -25,22 +25,33 @@
       :title="RomanceTitle"
     />
     
+    <div @mouseover = "btnOn" @mouseleave= "btnOff">
+      <h4 v-if="forusermovies.length !== 0" class='text-left ml-3'>{{ username }}님의 취향저격 베스트 컨텐츠</h4>
+      <swiper :options = "swiperOptions" ref = "rec">
+          <ForUserMovie
+            v-for="(forusermovie, idx) in forusermovies"
+            :key="idx"
+            :forusermovie="forusermovie"
+            class="col-lg-2 col-md-4 col-sm-6 col-xs-12"
+          />
+        <div class="swiper-pagination" slot="pagination"></div>
+        <div 
+          class="swiper-button-prev swiper-button-white" 
+          slot="button-prev" 
+          @click = "Recprev"
+        >
+        
 
-    <h4 v-if="forusermovies.length !== 0" class='text-left ml-3'>{{ username }}님의 취향저격 베스트 컨텐츠</h4>
-    <swiper :options = "swiperOptions" ref = "rec">
-        <ForUserMovie
-          v-for="(forusermovie, idx) in forusermovies"
-          :key="idx"
-          :forusermovie="forusermovie"
-          class="col-lg-2 col-md-4 col-sm-6 col-xs-12"
-        />
-      <div class="swiper-pagination" slot="pagination"></div>
-      <div 
-        class="swiper-button-prev swiper-button-white" 
-        slot="button-prev" 
-        @click = "Recprev"
-      >
-      
+        </div>
+        <div 
+        class="swiper-button-next swiper-button-white" 
+        slot="button-next" 
+        @click = "Recnext"
+        >
+        </div>
+        
+      </swiper>
+    </div>
 
       </div>
       <div 
@@ -73,6 +84,7 @@ export default {
   },
   data() {
     return {
+      buttonOn : true,
       //얘는 특별관리
       forusermovies:[],
       //배열들
@@ -109,6 +121,12 @@ export default {
     }
   },
   methods: {
+    btnOn(){
+      this.buttonOn = true
+    },
+    btnOff(){
+      this.buttonOn = false
+    },
     Recprev(){
       for (let i = 0; i < 5; i++){
         this.$refs.rec.$swiper.slidePrev()

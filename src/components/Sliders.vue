@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div @mouseover = "btnOn" @mouseleave = "btnOff">
     <h4 class='text-left ml-3'>{{ title }}</h4>
-    <swiper :options = "swiperOptions" ref = "slider">
+    <swiper :options = "swiperOptions" ref = "slider" >
       <RecommendMovieCard
+        
         v-for="(movie, idx) in movies"
         :key="idx"
         :movie="movie"
@@ -11,11 +12,13 @@
       />
       <div class="swiper-pagination" slot="pagination"></div>
       <div 
+        v-if="buttonOn"
         class="swiper-button-prev swiper-button-white" 
         slot="button-prev" 
         @click = "prev">    
       </div>
       <div 
+      v-if="buttonOn"
       class="swiper-button-next swiper-button-white" 
       slot="button-next" 
       @click = "next"
@@ -40,6 +43,7 @@ export default {
   },
   data() {
     return {
+      buttonOn : true,
       swiperOptions: {
           slidesPerView: 'auto',
           
@@ -55,6 +59,12 @@ export default {
     }
   },
   methods: {
+    btnOn(){
+      this.buttonOn = true
+    },
+    btnOff(){
+      this.buttonOn = false
+    },
     prev(){
       for (let i = 0; i < 5; i++){
         this.$refs.slider.$swiper.slidePrev()
