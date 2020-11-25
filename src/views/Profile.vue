@@ -32,7 +32,22 @@
     <hr style="background-color:white">
     <h2 class="text-left">작성한 글</h2>
     <span v-for= "(article,idx) in articles" :key = "idx">
-      <li class="text-left">{{article.title}}</li>
+      <li class="text-left" @click="getArticleDetail(idx)">
+        {{article.title}}
+        <b-modal 
+      ref="detail" 
+      size="lg" 
+      class="bg-black" 
+      :header-bg-variant="black"
+      :body-bg-variant="black"
+      :footer-bg-variant="black"
+      hide-footer hide-header>
+        <ArticleDetail
+          :article_pk ="article.id"
+          :writer ="username"
+        />
+      </b-modal>
+      </li>
     </span>
     <br><br>
     <hr style="background-color:white">
@@ -46,8 +61,11 @@
 <script>
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-
+import ArticleDetail from '../components/ArticleDetail'
 export default {
+  components:{
+    ArticleDetail
+  },
   data: function () {
     
     return {
@@ -55,12 +73,18 @@ export default {
       articles: [],
       comments: [],
       point: 0,
+      black: 'black',
       // rank: [
       //   {
 
       //   }
       // ]
     }
+  },
+  methods:{
+    getArticleDetail(idx) {
+      this.$refs.detail[idx-1].show()
+    },
   },
   created() {
     const token = localStorage.getItem('jwt')
