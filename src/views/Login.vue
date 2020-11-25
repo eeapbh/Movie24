@@ -1,25 +1,33 @@
 <template>
-  <div class="container">
-    <h1><b>로그인</b></h1>
-    <br>
-    <br>
-    <div class="form-group">
-      <label for="username">사용자 이름</label>
-      <input class="form-control" type="text" id="username" v-model="credentials.username">
+  <div class = "bg-main">
+    <div class="container">
+      <br><br><br>
+      <h1 class = "text-left"><b>로그인</b></h1>
+      <br>
+      <div class="form-group">
+        <!-- <label for="username">사용자 이름</label> -->
+        <input class="form-control" type="text" style = "width:500px;"
+        id="username" placeholder = "사용자 이름" v-model="credentials.username">
+      </div>
+      <br>
+      <div class="form-group">
+        <!-- <label for="password">비밀번호</label> -->
+        <input style = "width:500px;"
+          placeholder="비밀번호"
+          class="form-control" 
+          type="password" 
+          id="password" 
+          v-model="credentials.password"
+          @keypress.enter="login"
+        >
+      </div>
+      <br>
+      <button class="btn btn-primary" @click="login">로그인</button>
+      <img src="'https://img.huffingtonpost.com/asset/5d808be22300001c0555597c.jpeg?ops=scalefit_630_noupscale'" 
+      alt="" id="bg">
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <br>
     </div>
-    <br>
-    <div class="form-group">
-      <label for="password">비밀번호</label>
-      <input
-        class="form-control" 
-        type="password" 
-        id="password" 
-        v-model="credentials.password"
-        @keypress.enter="login"
-      >
-    </div>
-    <br>
-    <button class="btn btn-primary" @click="login">로그인</button>
   </div>
 </template>
 
@@ -52,3 +60,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.bg-main {
+  background-image: url('https://img.huffingtonpost.com/asset/5d808be22300001c0555597c.jpeg?ops=scalefit_630_noupscale');
+  background-size: 90% 100%;
+  background-repeat: no-repeat;
+  opacity:0.5;
+}
+</style>
