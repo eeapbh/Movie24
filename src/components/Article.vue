@@ -4,17 +4,34 @@
     <td>{{ getUsername }}</td>
     <td>{{ getComments_cnt }}</td>
     <td>{{ getRead }}</td>
+    <b-modal 
+      ref="detail" 
+      size="lg" 
+      class="bg-black" 
+      :header-bg-variant="black"
+      :body-bg-variant="black"
+      :footer-bg-variant="black"
+      hide-footer hide-header>
+        <ArticleDetail
+          :article_pk ="article.id"
+          :writer ="getUsername"
+        />
+      </b-modal>
   </tr>   
 </template>
 
 <script>
 import axios from 'axios'
-
+import ArticleDetail from '../components/ArticleDetail.vue'
 export default {
   name: 'Article',
+  components:{
+    ArticleDetail
+  },
   data() {
     return {
       getUsername: '',
+      black:'black',
     }
   },
   props: {
@@ -22,7 +39,8 @@ export default {
   },
   methods: {
     getArticleDetail() {
-      this.$router.push({name: 'ArticleDetail', params: {article_pk: this.article.id, writer: this.getUsername}})
+      // this.$router.push({name: 'ArticleDetail', params: {article_pk: this.article.id, writer: this.getUsername}})
+      this.$refs['detail'].show()
     },
   },
   computed: {

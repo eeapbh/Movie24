@@ -20,6 +20,7 @@
       </tbody> 
     </table>
     <div class="row">
+      
       <button class="btn btn-primary ml-4" @click="sendToCreateArticle">글쓰기</button>
       <form @submit="searchSome" class="form-inline ml-auto mr-2">
         <select v-model="selected" name="kind" class='mx-1 custom-select'>
@@ -55,7 +56,7 @@ import Article from '../components/Article.vue'
 export default {
   name: 'Community',
   components: {
-    Article
+    Article,
   },
   data() {
     return {

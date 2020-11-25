@@ -1,5 +1,5 @@
 <template>
-  <div class="container articledetail">
+  <div class="container articledetail" style="width: auto;">
     <div class="card" style="background-color: black">
       <div class="card-header">
         <div class='row'>
