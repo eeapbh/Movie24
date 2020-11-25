@@ -2,8 +2,7 @@
   <div v-on:click="getMovieDetail()" class="card bg-black" style="width: 18rem;">
     <div class="card-img"><img :src="getImage" class="card-img-top" alt=""></div>
     
-    <div class="card-body">
-      <br>
+    <div class="card-body ml-4" >
       <h5 class="card-title" v-for="(item,idx) in getTitle" 
       :key="idx"><b>{{ item }}</b></h5>
       <!-- <p class="card-text">{{ getOverview }}</p> -->
