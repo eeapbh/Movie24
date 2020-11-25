@@ -1,14 +1,14 @@
 <template>
   <div class="container" style="height: 800px">
-    <div class="card" style="width: 20rem; background-color:black">
+    <div style="width: 20rem; background-color:black">
       <div v-if="point > 600">
-        <!-- <img src="@/assets/골드.JPG"  class="card-img-top" alt="골드"> -->
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLrmBbQUIvayWSpk3PMQlMSoexcx9xKxdZkw&usqp=CAU"  class="rank-img" alt="골드">
       </div>
       <div v-else-if="point > 300">
-        <!-- <img src="@/assets/실버.JPG"  class="card-img-top" alt="실버"> -->
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFVdjsQfrm8KSl5ZvUDZ92GhDevjYwP1EIcQ&usqp=CAU"  class="rank-img" alt="실버">
       </div>
       <div v-else>
-        <!-- <img src="../assets/브론즈.JPG"  class="card-img-top" alt="브론즈"> -->
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdm4rU9A9Fu1tWHSfbDWbpw-gDezFuFQuKAQ&usqp=CAU"  class="rank-img" alt="브론즈">
       </div>
       <!-- <img :src="require(`@/assets/images/stooges/${item.img}.jpg`)" /> -->
       <div class="card-body">
@@ -25,19 +25,21 @@
         </div>
       </div>
     </div>
-    <!-- <h1>{{username}}의 프로필</h1>
+   
     <br><br>
-    <h2>랭크</h2>
-    <p>{{point}}</p>
-    <h2>작성한 글</h2>
+    <h2 class="text-left">랭크</h2>
+    <p class="text-left">{{point}} 점</p>
+    <hr style="background-color:white">
+    <h2 class="text-left">작성한 글</h2>
     <span v-for= "(article,idx) in articles" :key = "idx">
-      <li>{{article.title}}</li>
+      <li class="text-left">{{article.title}}</li>
     </span>
     <br><br>
-    <h2>작성한 댓글</h2>
+    <hr style="background-color:white">
+    <h2 class="text-left">작성한 댓글</h2>
     <span v-for= "(comment,idx) in comments" :key = "idx">
-      <li>{{comment.content}}</li>
-    </span> -->
+      <li class="text-left">{{comment.content}}</li>
+    </span>
   </div>
 </template>
 
@@ -105,4 +107,10 @@ export default {
 
 <style>
 
+  .rank-img {
+    
+    width: auto; height: auto;
+    max-width: 100px;
+    max-height: 100px;
+  }
 </style>
