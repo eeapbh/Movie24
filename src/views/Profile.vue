@@ -1,6 +1,6 @@
 <template>
   <div class="container profilediv" style="height: 800px">
-    <div style="width: 20rem; background-color:black">
+    <div class="row ml-1" style="width: 20rem; background-color:black">
       <div v-if="point > 600">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLrmBbQUIvayWSpk3PMQlMSoexcx9xKxdZkw&usqp=CAU"  class="rank-img" alt="골드">
       </div>
@@ -11,26 +11,27 @@
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdm4rU9A9Fu1tWHSfbDWbpw-gDezFuFQuKAQ&usqp=CAU"  class="rank-img" alt="브론즈">
       </div>
       <!-- <img :src="require(`@/assets/images/stooges/${item.img}.jpg`)" /> -->
-      <div class="card-body">
-        <h4 class="card-title">{{username}}의 프로필</h4>
-        <hr>
-        <div v-if="point > 600">
-          <p class="card-text">{{username}}님은 <b style="color:gold;">골드</b> 등급이십니다.</p>
-        </div>
-        <div v-else-if="point > 300">
-          <p class="card-text">{{username}}님은 <b style="color:silver;">실버</b> 등급이십니다.</p>
-        </div>
-        <div v-else>
-          <p class="card-text">{{username}}님은 <b style="color:brown;">브론즈</b> 등급이십니다.</p>
-        </div>
+    <div style="display: inline-block;">
+      <!-- <h4>{{username}}의 프로필</h4> -->
+      <hr>
+      <div v-if="point > 600">
+        <h5>{{username}}님은 <b style="color:gold;">골드</b> 등급이십니다.</h5>
       </div>
+      <div v-else-if="point > 300">
+        <h5>{{username}}님은 <b style="color:silver;">실버</b> 등급이십니다.</h5>
+      </div>
+      <div v-else>
+        <h5>{{username}}님은 <b style="color:brown;">브론즈</b> 등급이십니다.</h5>
+      </div>
+    </div>
     </div>
    
     <br><br>
-    <h2 class="text-left">랭크</h2>
-    <p class="text-left">{{point}} 점</p>
+    <h2 class="text-left" style="color:gold">포인트</h2>
+    <p class="text-left ml-1">{{point}} 점</p>
+    <br>
     <hr style="background-color:white">
-    <h2 class="text-left">작성한 글</h2>
+    <h2 class="text-left" style="color:gold">작성한 글</h2>
     <span v-for= "(article,idx) in articles" :key = "idx">
       <li class="text-left" @click="getArticleDetail(idx)">
         {{article.title}}
@@ -51,7 +52,7 @@
     </span>
     <br><br>
     <hr style="background-color:white">
-    <h2 class="text-left">작성한 댓글</h2>
+    <h2 class="text-left" style="color:gold">작성한 댓글</h2>
     <span v-for= "(comment,idx) in comments" :key = "idx">
       <li class="text-left">{{comment.content}}</li>
     </span>
@@ -129,13 +130,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
   .rank-img {
     
     width: auto; height: auto;
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 500px;
+    max-height: 500px;
   }
   .profilediv {
     margin-bottom: 250px;
