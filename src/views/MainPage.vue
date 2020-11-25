@@ -52,13 +52,13 @@ export default {
 .mainText {
   position: absolute;
   top: 70%;
-  left: 50%;
+  left: 44.5%;
   transform: translate(-35% ,-70%);
 }
 
 a {
   position: absolute;
   top: 13%;
-  right: 28.5%;
+  right: 35.5%;
 }
 </style>
