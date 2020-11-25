@@ -1,7 +1,9 @@
 <template>
   <div class="mb-3 bgblack text-white" style="width: auto;">
     <div class="col-md-4" >
-      <img :src="getImage" alt="" width="300px" style = "margin-left: 170px;">
+      <br>
+      <img :src="getImage" alt=""  
+      style = "margin-left: 80px;">
     </div>
     <hr>
     <iframe v-if="videoURI" :src="videoURI" frameborder="0" style = "width: 700px; height: 350px"></iframe>
@@ -84,7 +86,7 @@ export default {
   },
   computed: {
     getImage: function() {
-      return 'http://image.tmdb.org/t/p/w185'+this.poster_path
+      return 'http://image.tmdb.org/t/p/w500'+this.poster_path
     },
    
   },
