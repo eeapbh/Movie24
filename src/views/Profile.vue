@@ -31,7 +31,7 @@
     <p class="text-left ml-1">{{point}} 점</p>
     <br>
     <hr style="background-color:white">
-    <h2 class="text-left" style="color:gold">작성한 글</h2>
+    <h2 class="text-left" style="color:gold">내가 작성한 글</h2>
     <span v-for= "(article,idx) in paginatedArticles" :key = "idx">
       <li class="text-left" style="list-style:none" @click="getArticleDetail(idx)">
         
@@ -62,10 +62,16 @@
     </div>
     <br><br>
     <hr style="background-color:white">
-    <h2 class="text-left" style="color:gold">작성한 댓글</h2>
+    <h2 class="text-left row" >
+      <div class="col-5" style="color:gold">내가 작성한 댓글</div>
+      <div class="col-7 text-right" style="color:gold"> 원문</div>
+    </h2>
     <span v-for= "(comment,idx) in paginatedComments" :key = "idx">
-      <li class="text-left" style="list-style:none">
-        {{comment.content}} - (from {{comment.article}})
+      <li class="text-left row" style="list-style:none">
+        <div class="col-8">{{comment.content}}</div>
+        <div class="col-4 text-right">{{comment.article}}</div>
+        
+
         </li>
     </span>
     <div class="btn-cover">
