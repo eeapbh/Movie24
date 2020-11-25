@@ -4,8 +4,10 @@
       <div class="card-img"><img  :src="getImage" class="card-img-top" alt=""></div>
       
       <div class="card-body">
-        <h5 class="card-title"><b>{{ getTitle }}</b></h5>
         
+        <h5 class="card-title" v-for="(item,idx) in getTitle" :key="idx"><b>{{ item }}</b></h5>
+        
+        <!-- <div v-html="getTitle"></div> -->
       </div>
       <b-modal 
       ref="detail" 
@@ -43,7 +45,29 @@ export default {
       return 'http://image.tmdb.org/t/p/w185'+this.movie.poster_path
     },
     getTitle: function() {
-      return this.movie.title
+      const t = this.movie.title
+      // const len = length(t)
+      const temp = t.split(' ')
+      // let res= ''
+      // temp.foreach(function(element){
+        // if (length(res) + length(element) > 12){
+        // res =  res+ element
+        // } else {
+        //   res = res + 'x' + element
+        // }
+      // })
+      let res = []
+      let tp = ''
+      for(let i = 0; i < temp.length; i++){
+        if(tp.length + temp[i].length < 12 ){ 
+          tp += ' ' + temp[i]
+        }else{
+          res.push(tp)
+          tp = temp[i]
+        }
+      }
+      res.push(tp)
+      return res
     },
     getOverview: function() {
       return this.movie.overview
@@ -53,7 +77,7 @@ export default {
   methods: {
     getMovieDetail() {
       // console.log(this.movie.title)
-      console.log(this.movie)
+      console.log('TQ',this.movie.title)
       // this.$bvModal.show('detail')
       this.$refs['detail'].show()
       // console.log(this.movie)
