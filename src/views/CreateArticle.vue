@@ -1,16 +1,18 @@
 <template>
   <div class="container">
+    <br><br><br><br>
     <form @submit="onSubmit">
       <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title">TITLE</label>
         <textarea class="form-control" id="title" rows="1" v-model="title"></textarea>
       </div>
       <div class="form-group">
-        <label for="content">Content</label>
+        <label for="content">CONTENT</label>
         <textarea class="form-control" id="content" rows="10" v-model="content"></textarea>
       </div>
       <button class="btn btn-primary">Submit</button>
     </form>
+    <br><br><br><br><br><br><br><br><br><br>
   </div>
 </template>
 
