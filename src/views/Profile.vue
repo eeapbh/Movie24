@@ -33,7 +33,8 @@
     <hr style="background-color:white">
     <h2 class="text-left" style="color:gold">작성한 글</h2>
     <span v-for= "(article,idx) in articles" :key = "idx">
-      <li class="text-left" @click="getArticleDetail(idx)">
+      <li class="text-left" style="list-style:none" @click="getArticleDetail(idx)">
+        
         {{article.title}}
         <b-modal 
       ref="detail" 
@@ -54,13 +55,7 @@
     <hr style="background-color:white">
     <h2 class="text-left" style="color:gold">작성한 댓글</h2>
     <span v-for= "(comment,idx) in comments" :key = "idx">
-      <!-- <li class="text-left"> -->
-      <div class = "text-left">
-        <h4>{{comment.article}}></h4>
-        <h5>{{comment.content}}</h5>
-        <hr>
-      </div>
-      <!-- </li> -->
+      <li class="text-left" style="list-style:none">{{comment.content}}</li>
     </span>
   </div>
 </template>
@@ -146,6 +141,6 @@ export default {
     border-radius: 50%;
   }
   .profilediv {
-    margin-bottom: 250px;
+    margin-bottom: 500px;
   }
 </style>

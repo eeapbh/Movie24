@@ -166,6 +166,7 @@ export default {
     width: 100%;
     height: 180px;
     background: black;
+    
   }
 
   .footer {
