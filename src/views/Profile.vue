@@ -54,7 +54,13 @@
     <hr style="background-color:white">
     <h2 class="text-left" style="color:gold">작성한 댓글</h2>
     <span v-for= "(comment,idx) in comments" :key = "idx">
-      <li class="text-left">{{comment.content}}</li>
+      <!-- <li class="text-left"> -->
+      <div class = "text-left">
+        <h4>{{comment.article}}></h4>
+        <h5>{{comment.content}}</h5>
+        <hr>
+      </div>
+      <!-- </li> -->
     </span>
   </div>
 </template>
