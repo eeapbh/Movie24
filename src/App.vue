@@ -1,7 +1,7 @@
 <template>
   <div id="app" class = 'text-white bgblack'>
     <b-navbar class="sticky-top bl" toggleable="lg" type="dark" variant="dark">
-      <router-link class="navbar-brand" to="/"><b>Movie24</b></router-link>
+      <router-link class="navbar-brand" to="/"><a href=""><img src="https://fontmeme.com/permalink/201125/e5e0cb70c6e30a55fb77051ec55bc665.png" alt="netflix-type" border="0"></a></router-link>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
