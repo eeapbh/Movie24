@@ -83,9 +83,11 @@ export default {
 .bgblack {
   background-color: black;
   
+  
 }
 .card-img:hover {
   transform: scale(1.2)
+  
   
 }
 .card-img {
@@ -94,6 +96,7 @@ export default {
   height: 380px;
   margin-bottom: 60px;
   cursor: pointer;
+  transition-duration: 1s;
   
 }
 
