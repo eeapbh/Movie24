@@ -46,12 +46,22 @@
     </form>
     <hr>
     <MovieComment 
-      v-for="(comment, idx) in comments"
+      v-for="(comment, idx) in paginatedData"
       :key="idx"
       :comment="comment"
       :movie_pk="movie_pk"
       @onParentDeleteComment="onParentDeleteComment"
     />
+    <br>
+    <div class="btn-cover">
+      <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
+        이전
+      </button>
+      <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} 페이지</span>
+      <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
+        다음
+      </button>
+    </div>
   </div>
   
 </template>
@@ -60,6 +70,7 @@
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import StarRating from 'vue-star-rating'
+// import _ from 'lodash'
 import MovieComment from '../components/MovieComment.vue'
 export default {
   components: {
@@ -78,19 +89,21 @@ export default {
       myrating:'',
       comments:[],
       videoURI:'',
+      pageNum: 0,
+      pageSize: 5,
     }
   },
   props: {
     movie_pk: Number,
      
   },
-  computed: {
-    getImage: function() {
-      return 'http://image.tmdb.org/t/p/w500'+this.poster_path
-    },
-   
-  },
   methods: {
+    nextPage () {
+      this.pageNum += 1;
+    },
+    prevPage () {
+      this.pageNum -= 1;
+    },
     commentSubmit(event) {
       event.preventDefault()
       if (this.mycomment.length !== 0) {
@@ -122,6 +135,7 @@ export default {
                 temp.push(element)
               })
               this.comments = temp
+              // this.comments = _.sortBy(temp,
           }).catch((err)=>{
             console.error(err)
           })
@@ -152,6 +166,29 @@ export default {
       // console.log(rating)
       this.myrating = rating * 2
     }
+  },
+  computed: {
+    getImage: function() {
+      return 'http://image.tmdb.org/t/p/w500'+this.poster_path
+    },
+    pageCount () {
+      let listLeng = this.comments.length,
+          listSize = this.pageSize,
+          page = Math.floor(listLeng / listSize);
+      if (listLeng % listSize > 0) page += 1;
+      
+      /*
+      아니면 page = Math.floor((listLeng - 1) / listSize) + 1;
+      이런식으로 if 문 없이 고칠 수도 있다!
+      */
+      return page;
+    },
+    paginatedData () {
+      const start = this.pageNum * this.pageSize,
+            end = start + this.pageSize;
+      // const sortedComments = _.sortBy(this.comments, 'id').reverse()
+      return this.comments.slice(start, end);
+    },
   },
   beforeUpdate(){
     const API_KEY = 'AIzaSyCXIrZdWD7A8aaMCRE-WMaRv0Pv6-qnpKo'

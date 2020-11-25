@@ -32,12 +32,21 @@
     <h3><b>Comments</b></h3>
     
     <Comment 
-      v-for="(comment, idx) in comments"
+      v-for="(comment, idx) in paginatedData"
       :key="idx"
       :comment="comment"
       :article_pk="article_pk"
       @onParentDeleteComment="onParentDeleteComment"
     />
+    <div class="btn-cover">
+      <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
+        이전
+      </button>
+      <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} 페이지</span>
+      <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
+        다음
+      </button>
+    </div>
     <div>
       <br>
     </div>
@@ -61,6 +70,8 @@ export default {
       mycomment: '',
       comments: [],
       currentName: '',
+      pageNum: 0,
+      pageSize: 3,
     }
   },
   props: {
@@ -72,6 +83,12 @@ export default {
     },
   },
   methods: {
+    nextPage () {
+      this.pageNum += 1;
+    },
+    prevPage () {
+      this.pageNum -= 1;
+    },
     commentSubmit(event) {
       event.preventDefault()
       if (this.mycomment.length !== 0) {
@@ -153,7 +170,25 @@ export default {
     },
     getTime() {
       return this.updated_at.slice(11,16)
-    }
+    },
+    pageCount () {
+      let listLeng = this.comments.length,
+          listSize = this.pageSize,
+          page = Math.floor(listLeng / listSize);
+      if (listLeng % listSize > 0) page += 1;
+      
+      /*
+      아니면 page = Math.floor((listLeng - 1) / listSize) + 1;
+      이런식으로 if 문 없이 고칠 수도 있다!
+      */
+      return page;
+    },
+    paginatedData () {
+      const start = this.pageNum * this.pageSize,
+            end = start + this.pageSize;
+      // const sortedArticles = _.sortBy(this.articles, 'id').reverse()
+      return this.comments.slice(start, end);
+    },
   },
   created() {
     const article_pk = this.article_pk
