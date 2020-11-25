@@ -83,7 +83,7 @@ export default {
   },
   methods:{
     getArticleDetail(idx) {
-      this.$refs.detail[idx-1].show()
+      this.$refs.detail[idx].show()
     },
   },
   created() {
